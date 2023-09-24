@@ -1,0 +1,6 @@
+export const wordDictionary: Record<string, string | undefined> = {
+	student_no: 'شماره دانشجویی',
+	email_address: 'آدرس ایمیل',
+	send_code: 'ارسال کد',
+	password: 'رمز عبور',
+};

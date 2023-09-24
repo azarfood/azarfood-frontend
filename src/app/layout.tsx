@@ -1,4 +1,5 @@
 import '@/configs/globals.css';
+import { cn } from '@/utils/cn';
 import { Montserrat } from 'next/font/google';
 import { Providers } from '@/store/providers';
 import React from 'react';
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-	<html lang="en">
-		<body className={montserrat.className}>
+	<html lang="en" dir="rtl">
+		<body className={cn(montserrat.className, 'wrapper')}>
 			<Providers>{children}</Providers>
 		</body>
 	</html>
