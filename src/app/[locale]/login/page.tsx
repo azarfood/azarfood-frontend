@@ -3,8 +3,8 @@
 import { Button } from '@/components/button';
 import { loginDTO } from '@/schemas/dto/auth/user/login.dto';
 import { TextField } from '@/components/text-field';
-import { translate } from '@/utils/translate';
 import { useForm } from 'react-hook-form';
+import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import LoginFigure from '@/assets/images/login-figure.png';
@@ -18,6 +18,8 @@ export default function Register() {
 		resolver: zodResolver(loginDTO),
 		mode: 'onTouched',
 	});
+	const t = useTranslations('auth');
+
 	return (
 		<main className="flex h-[100dvh]">
 			<figure className="relative flex-1">
@@ -40,17 +42,15 @@ export default function Register() {
 						error={formState.errors.username?.message}
 						isTouched={formState.touchedFields.username}
 						{...register('username')}
-						title={translate('student_no')}
+						title={t('student_no')}
 					/>
 					<TextField
 						error={formState.errors.password?.message}
 						isTouched={formState.touchedFields.password}
 						{...register('password')}
-						title={translate('password')}
+						title={t('password')}
 					/>
-					<Button className="mt-8 bg-[#fc614b]">
-						{translate('send_code')}
-					</Button>
+					<Button className="mt-8 bg-[#fc614b]">{t('send_code')}</Button>
 				</form>
 			</section>
 		</main>
