@@ -7,7 +7,7 @@
     },
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
