@@ -1,32 +1,38 @@
 {
-  "extends": ["next/core-web-vitals","prettier"],
-  "plugins": [
-    "eslint-plugin-import",
-    "eslint-plugin-tailwindcss",
-    "@typescript-eslint",
-    "prettier",
-    "sort-imports-es6-autofix"
-  ],
-  "rules": {
-    "@typescript-eslint/consistent-type-imports": "error",
-    "tailwindcss/classnames-order": ["warn",{
-      "callees": ["classnames","cn"]
-  }],
-  "no-unused-vars":["error",  { 
-    "argsIgnorePattern": "^_",
-    "varsIgnorePattern": "^_",
-    "caughtErrorsIgnorePattern": "^_"
-  }],
-  "arrow-body-style": ["error", "as-needed"],
-  "react/self-closing-comp": ["error", { "component": true, "html": true }],
-  "prettier/prettier": "error",
-  "sort-imports": "off",
-    "sort-imports-es6-autofix/sort-imports-es6": [
-        "warn",
-        {
-            "ignoreCase": true,
-            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-        }
-    ]
-  }
+	"extends": ["next/core-web-vitals", "prettier"],
+	"plugins": [
+		"eslint-plugin-import",
+		"eslint-plugin-tailwindcss",
+		"@typescript-eslint",
+		"prettier",
+		"sort-imports-es6-autofix"
+	],
+	"rules": {
+		"@typescript-eslint/consistent-type-imports": "error",
+		"tailwindcss/classnames-order": [
+			"warn",
+			{
+				"callees": ["classnames", "cn"]
+			}
+		],
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_",
+				"caughtErrorsIgnorePattern": "^_"
+			}
+		],
+		"arrow-body-style": ["error", "as-needed"],
+		"react/self-closing-comp": ["error", { "component": true, "html": true }],
+		"prettier/prettier": "error",
+		"sort-imports": "off",
+		"sort-imports-es6-autofix/sort-imports-es6": [
+			"warn",
+			{
+				"ignoreCase": true,
+				"memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+			}
+		]
+	}
 }
