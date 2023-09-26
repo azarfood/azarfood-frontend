@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"student_no": "شماره دانشجویی",
+		"student_no": "شماره دانشجوییی",
 		"email_address": "آدرس ایمیل",
 		"send_code": "ارسال کد",
 		"password": "رمز عبور"
