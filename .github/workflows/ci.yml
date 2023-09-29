@@ -24,3 +24,6 @@ jobs:
 
       - name: 📥 Monorepo install
         uses: ./.github/actions/pnpm-install
+
+      - name: Build
+        run: pnpm build
