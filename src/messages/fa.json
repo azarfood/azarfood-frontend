@@ -4,5 +4,8 @@
 		"email_address": "آدرس ایمیل",
 		"send_code": "ارسال کد",
 		"password": "رمز عبور"
+	},
+	"error": {
+		"page_not_found": "صفحه مورد نظر پیدا نشد!"
 	}
 }

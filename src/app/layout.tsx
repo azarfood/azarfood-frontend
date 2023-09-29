@@ -1,6 +1,6 @@
 import '@/configs/globals.css';
 import { cn } from '@/utils/cn';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Vazirmatn } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { Providers } from '@/store/providers';
 import React from 'react';
@@ -10,6 +10,7 @@ export function generateStaticParams() {
 }
 
 const montserrat = Montserrat({ subsets: ['latin'] });
+const vazirmatn = Vazirmatn({ subsets: ['arabic'] });
 
 export const metadata: Metadata = {
 	title: 'Azarfood',
@@ -20,7 +21,9 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 	let messages = (await import(`@/messages/fa.json`)).default;
 	return (
 		<html lang="fa" dir="rtl">
-			<body className={cn(montserrat.className, 'wrapper')}>
+			<body
+				className={cn(montserrat.className, vazirmatn.className, 'wrapper')}
+			>
 				<NextIntlClientProvider locale={'fa'} messages={messages}>
 					<Providers>{children}</Providers>
 				</NextIntlClientProvider>
