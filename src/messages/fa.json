@@ -3,7 +3,10 @@
 		"student_no": "شماره دانشجویی",
 		"email_address": "آدرس ایمیل",
 		"send_code": "ارسال کد",
-		"password": "رمز عبور"
+		"password": "رمز عبور",
+		"login": "ورود",
+		"register": "ثبت نام",
+		"remember_me": "مرا به خاطر بسپار"
 	},
 	"error": {
 		"page_not_found": "صفحه مورد نظر پیدا نشد!"
