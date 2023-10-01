@@ -4,13 +4,11 @@ import { Button } from '@/components/button';
 import { loginDTO } from '@/schemas/dto/auth/user/login.dto';
 import { TextField } from '@/components/text-field';
 import { useForm } from 'react-hook-form';
-import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Checkbox from '@/components/checkbox';
 import type { z } from 'zod';
 
-export default function Login() {
+export default function Register() {
 	const { register, formState, handleSubmit } = useForm<
 		z.infer<typeof loginDTO>
 	>({
@@ -18,7 +16,6 @@ export default function Login() {
 		mode: 'onTouched',
 	});
 	const t = useTranslations('auth');
-	const checkboxId = useId();
 	return (
 		<form
 			onSubmit={handleSubmit(console.log)}
@@ -36,11 +33,9 @@ export default function Login() {
 				{...register('password')}
 				title={t('password')}
 			/>
-			<Checkbox id={checkboxId} className="mt-3">
-				<Checkbox.Indicator />
-				<Checkbox.Label>{t('remember_me')}</Checkbox.Label>
-			</Checkbox>
-			<Button className="mt-6 bg-[#fc614b]">{t('send_code')}</Button>
+			<Button className="mt-6 bg-[#F18817] bg-opacity-60">
+				{t('send_code')}
+			</Button>
 		</form>
 	);
 }
