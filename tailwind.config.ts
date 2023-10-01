@@ -29,6 +29,7 @@ const config: Config = {
 			colors: {
 				muted: '#D5D5D5',
 				primary: '#80C175',
+				'primary-dark': '#025920',
 			},
 		},
 	},

@@ -8,6 +8,7 @@ import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Checkbox from '@/components/checkbox';
+import Link from 'next/link';
 import type { z } from 'zod';
 
 export default function Login() {
@@ -41,6 +42,12 @@ export default function Login() {
 				<Checkbox.Label>{t('remember_me')}</Checkbox.Label>
 			</Checkbox>
 			<Button className="mt-6 bg-[#fc614b]">{t('send_code')}</Button>
+			<Link
+				href="/login/restore"
+				className="w-full text-center text-base font-medium text-primary-dark"
+			>
+				{t('restore_password')}
+			</Link>
 		</form>
 	);
 }
