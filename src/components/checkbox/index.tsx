@@ -60,7 +60,7 @@ function CheckboxIndicator() {
 	const { id, isChecked, setIsChecked } = useContext(CheckboxContext);
 
 	return (
-		<button className="relative flex items-center">
+		<button type="button" className="relative flex items-center">
 			<input
 				type="checkbox"
 				className="border-blue-gray-200 relative h-5 w-5 cursor-pointer appearance-none rounded-md border-2 transition-all duration-500 checked:border-primary checked:bg-primary"

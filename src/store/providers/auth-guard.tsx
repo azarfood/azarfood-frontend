@@ -1,7 +1,10 @@
 'use client';
 
+import { AUTH_TOKEN_STORAGE_KEY } from '@/configs/constants';
+import { ls } from '@/services/localstorage.service';
 import { type PropsWithChildren, useEffect } from 'react';
-import { useAppSelector } from '../redux/hooks';
+import { setUser } from '../redux/slices/user-slice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useIsHydrated } from '@/hooks/use-is-hydrated';
 import { useRouter } from 'next/navigation';
 
@@ -9,11 +12,17 @@ export const AuthGuard = ({ children }: PropsWithChildren) => {
 	const isHydrated = useIsHydrated();
 	const router = useRouter();
 	const user = useAppSelector(state => state.user.user);
+	const dispatch = useAppDispatch();
 	useEffect(() => {
 		if (isHydrated && !user) {
-			router.push('/');
+			const access_token = ls.get(AUTH_TOKEN_STORAGE_KEY);
+			if (typeof access_token === 'string') {
+				dispatch(setUser({ access_token }));
+				return;
+			}
+			router.push('/login');
 		}
-	}, [isHydrated, router, user]);
+	}, [isHydrated, router, user, dispatch]);
 	if (!isHydrated) {
 		return null;
 	}

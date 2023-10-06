@@ -19,7 +19,7 @@ export default function Register() {
 	return (
 		<form
 			onSubmit={handleSubmit(console.log)}
-			className="relative flex w-96 flex-col gap-4 py-20"
+			className="relative flex w-full max-w-[24rem] flex-col gap-4 px-2 py-20"
 		>
 			<TextField
 				error={formState.errors.username?.message}

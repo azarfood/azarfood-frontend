@@ -1,14 +1,22 @@
 'use client';
 
+import { AUTH_TOKEN_STORAGE_KEY } from '@/configs/constants';
 import { Button } from '@/components/button';
 import { loginDTO } from '@/schemas/dto/auth/user/login.dto';
+import { ls } from '@/services/localstorage.service';
+import { mute } from '@/utils/identity';
+import { services } from '@/services/http';
+import { setUser } from '@/store/redux/slices/user-slice';
 import { TextField } from '@/components/text-field';
+import { useAppDispatch } from '@/store/redux/hooks';
 import { useForm } from 'react-hook-form';
 import { useId } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Checkbox from '@/components/checkbox';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 import type { z } from 'zod';
 
 export default function Login() {
@@ -20,10 +28,30 @@ export default function Login() {
 	});
 	const t = useTranslations('auth');
 	const checkboxId = useId();
+	const dispatch = useAppDispatch();
+	const router = useRouter();
+	async function login(dto: z.infer<typeof loginDTO>) {
+		const res = await toast
+			.promise(services.auth.login(dto), {
+				loading: t('login_pending'),
+				success: t('login_success'),
+				error: e => e.response.data.massage ?? t('login_error'),
+			})
+			.catch(mute);
+		if (res?.data) {
+			dispatch(
+				setUser({
+					access_token: res.data.access_token,
+				}),
+			);
+			ls.set(AUTH_TOKEN_STORAGE_KEY, res.data.access_token);
+			router.push('/private');
+		}
+	}
 	return (
 		<form
-			onSubmit={handleSubmit(console.log)}
-			className="relative flex w-96 flex-col gap-4 py-20"
+			onSubmit={handleSubmit(login)}
+			className="relative flex w-full max-w-[24rem] flex-col gap-4 px-2 py-20"
 		>
 			<TextField
 				error={formState.errors.username?.message}

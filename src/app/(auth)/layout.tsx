@@ -13,6 +13,7 @@ export default function Register({ children }: PropsWithChildren) {
 	const t = useTranslations('auth');
 	const pathName = usePathname();
 	const isLogin = pathName.startsWith('/login');
+	if (pathName.startsWith('/logout')) return children;
 	return (
 		<main className="full-bleed flex h-[100dvh]">
 			<AnimatePresence mode="popLayout">

@@ -7,7 +7,10 @@
 		"login": "ورود",
 		"register": "ثبت نام",
 		"remember_me": "مرا به خاطر بسپار",
-		"restore_password": "بازیابی رمز عبور"
+		"restore_password": "بازیابی رمز عبور",
+		"login_pending": "در حال بارگیری",
+		"login_success": "ورود موفقیت آمیز",
+		"login_error": "خطایی حین ورود رخ داد"
 	},
 	"error": {
 		"page_not_found": "صفحه مورد نظر پیدا نشد!"
