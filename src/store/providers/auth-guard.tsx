@@ -1,9 +1,9 @@
 'use client';
 
 import { AUTH_TOKEN_STORAGE_KEY } from '@/configs/constants';
-import { ls } from '@/services/localstorage.service';
 import { type PropsWithChildren, useEffect } from 'react';
 import { setUser } from '../redux/slices/user-slice';
+import { storage } from '@/services/storage.service';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useIsHydrated } from '@/hooks/use-is-hydrated';
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,8 @@ export const AuthGuard = ({ children }: PropsWithChildren) => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		if (isHydrated && !user) {
-			const access_token = ls.get(AUTH_TOKEN_STORAGE_KEY);
+			const access_token = storage.get(AUTH_TOKEN_STORAGE_KEY);
+			console.log(access_token);
 			if (typeof access_token === 'string') {
 				dispatch(setUser({ access_token }));
 				return;

@@ -1,3 +1,7 @@
 export default function PrivatePageTest() {
-	return 'this is a private page';
+	return (
+		<div className="mx-auto flex h-screen items-center">
+			this is a private page
+		</div>
+	);
 }

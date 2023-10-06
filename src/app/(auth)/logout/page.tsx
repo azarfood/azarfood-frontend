@@ -1,7 +1,7 @@
 'use client';
 import { AUTH_TOKEN_STORAGE_KEY } from '@/configs/constants';
 import { deleteUser } from '@/store/redux/slices/user-slice';
-import { ls } from '@/services/localstorage.service';
+import { storage } from '@/services/storage.service';
 import { useAppDispatch } from '@/store/redux/hooks';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -11,7 +11,7 @@ export default function LogoutPage() {
 	const router = useRouter();
 	useEffect(() => {
 		if (window) {
-			ls.remove(AUTH_TOKEN_STORAGE_KEY);
+			storage.remove(AUTH_TOKEN_STORAGE_KEY);
 			dispatch(deleteUser());
 			router.replace('/login');
 		}

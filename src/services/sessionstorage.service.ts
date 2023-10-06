@@ -2,7 +2,7 @@
 
 const get = (key: string): unknown => {
 	try {
-		const item: unknown = localStorage.getItem(key);
+		const item: unknown = sessionStorage.getItem(key);
 		if (typeof item === 'string') return JSON.parse(item);
 	} catch (error) {
 		return undefined;
@@ -11,20 +11,20 @@ const get = (key: string): unknown => {
 
 const set = (key: string, value: unknown): void => {
 	try {
-		localStorage.setItem(key, JSON.stringify(value));
+		sessionStorage.setItem(key, JSON.stringify(value));
 	} catch (error) {
 		return undefined;
 	}
 };
 
 const remove = (key: string) => {
-	localStorage.removeItem(key);
+	sessionStorage.removeItem(key);
 };
 const clearAll = () => {
-	localStorage.clear();
+	sessionStorage.clear();
 };
 
-export const ls = {
+export const ss = {
 	get,
 	set,
 	remove,

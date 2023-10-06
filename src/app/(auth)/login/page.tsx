@@ -3,14 +3,14 @@
 import { AUTH_TOKEN_STORAGE_KEY } from '@/configs/constants';
 import { Button } from '@/components/button';
 import { loginDTO } from '@/schemas/dto/auth/user/login.dto';
-import { ls } from '@/services/localstorage.service';
 import { mute } from '@/utils/identity';
 import { services } from '@/services/http';
 import { setUser } from '@/store/redux/slices/user-slice';
+import { storage } from '@/services/storage.service';
 import { TextField } from '@/components/text-field';
 import { useAppDispatch } from '@/store/redux/hooks';
 import { useForm } from 'react-hook-form';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,6 +30,7 @@ export default function Login() {
 	const checkboxId = useId();
 	const dispatch = useAppDispatch();
 	const router = useRouter();
+	const [rememberLogin, setRememberLogin] = useState(false);
 	async function login(dto: z.infer<typeof loginDTO>) {
 		const res = await toast
 			.promise(services.auth.login(dto), {
@@ -44,7 +45,7 @@ export default function Login() {
 					access_token: res.data.access_token,
 				}),
 			);
-			ls.set(AUTH_TOKEN_STORAGE_KEY, res.data.access_token);
+			storage.set(AUTH_TOKEN_STORAGE_KEY, res.data.access_token, rememberLogin);
 			router.push('/private');
 		}
 	}
@@ -65,7 +66,7 @@ export default function Login() {
 				{...register('password')}
 				title={t('password')}
 			/>
-			<Checkbox id={checkboxId} className="mt-3">
+			<Checkbox id={checkboxId} onChange={setRememberLogin} className="mt-3">
 				<Checkbox.Indicator />
 				<Checkbox.Label>{t('remember_me')}</Checkbox.Label>
 			</Checkbox>

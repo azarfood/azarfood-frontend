@@ -36,9 +36,15 @@ const tickVariants = {
 
 interface CheckboxProps extends PropsWithChildren, PropsWithClassName {
 	id: string;
+	onChange: (_value: boolean) => void;
 }
 
-export default function Checkbox({ children, id, className }: CheckboxProps) {
+export default function Checkbox({
+	children,
+	id,
+	className,
+	onChange,
+}: CheckboxProps) {
 	const [isChecked, setIsChecked] = useState(false);
 
 	return (
@@ -47,7 +53,9 @@ export default function Checkbox({ children, id, className }: CheckboxProps) {
 				value={{
 					id,
 					isChecked,
-					setIsChecked,
+					setIsChecked: e => {
+						onChange(e), setIsChecked(e);
+					},
 				}}
 			>
 				{children}
