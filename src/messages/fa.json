@@ -4,6 +4,8 @@
 		"email_address": "آدرس ایمیل",
 		"send_code": "ارسال کد",
 		"password": "رمز عبور",
+		"new_password": "رمز عبور جدید",
+		"sama_password": "رمز عبور سامانه سما",
 		"confirm_password": "تکرار رمز عبور",
 		"login": "ورود",
 		"register": "ثبت نام",
@@ -16,9 +18,12 @@
 		"last_name": "نام خانوادگی",
 		"phone_number": "شماره تلفن همراه",
 		"accept_the_terms": "قوانین را می پذیرم",
+		"restore_password_success": "بازیابی رمز عبور موفقیت آمیز بود",
 		"error": {
 			"confirm_password": "تکرار رمز عبور صحیح نمیباشد",
-			"register": "خطایی حین ثبت نام رخ داد"
+			"register": "خطایی حین ثبت نام رخ داد",
+			"restore_password": "خطایی حین بازیابی رمز عبور رخ داد",
+			"error_general": "خطایی حین {operation} رخ داد"
 		}
 	},
 	"error": {

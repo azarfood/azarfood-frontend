@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { forgetPasswordDTO } from '@/schemas/dto/user/forget-password';
 import type { loginDTO } from '@/schemas/dto/auth/restaurant/login.dto';
 import type { loginResponseDTO } from '@/schemas/dto/auth/user/login.dto';
 import type { registerCompleteDTO } from '@/schemas/dto/auth/user/register-complete.dto';
@@ -22,6 +23,11 @@ export class AuthService {
 	public registerComplete = (dto: z.infer<typeof registerCompleteDTO>) =>
 		axios.post<z.infer<typeof registerResponseDTO>>(
 			`${process.env.NEXT_PUBLIC_API_BASE_URL}/user/register_complete`,
+			dto,
+		);
+	public restorePassword = (dto: z.infer<typeof forgetPasswordDTO>) =>
+		axios.post<z.infer<typeof registerResponseDTO>>(
+			`${process.env.NEXT_PUBLIC_API_BASE_URL}/user/forget_password`,
 			dto,
 		);
 }

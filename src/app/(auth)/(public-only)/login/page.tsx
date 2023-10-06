@@ -72,7 +72,7 @@ export default function Login() {
 			</Checkbox>
 			<Button className="mt-6 bg-[#fc614b]">{t('send_code')}</Button>
 			<Link
-				href="/login/restore"
+				href="/login/restore-password"
 				className="w-full text-center text-base font-medium text-primary-dark"
 			>
 				{t('restore_password')}
