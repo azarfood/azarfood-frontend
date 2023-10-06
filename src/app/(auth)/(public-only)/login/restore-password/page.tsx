@@ -11,7 +11,6 @@ import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 const forgetPasswordSchema = z
@@ -88,12 +87,6 @@ export default function ForgetPassword() {
 				title={t('confirm_password')}
 			/>
 			<Button className="mt-6 bg-[#fc614b]">{t('send_code')}</Button>
-			<Link
-				href="/login/restore"
-				className="w-full text-center text-base font-medium text-primary-dark"
-			>
-				{t('restore_password')}
-			</Link>
 		</form>
 	);
 }
