@@ -5,3 +5,6 @@ export const shadowTransitions = cn(
 );
 
 export const AUTH_TOKEN_STORAGE_KEY = 'auth-token';
+
+export const USER_CODE_SEARCH_PARAM = 'user-code';
+export const USER_KEY_SEARCH_PARAM = 'user-key';

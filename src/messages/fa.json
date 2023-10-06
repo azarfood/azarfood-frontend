@@ -4,13 +4,22 @@
 		"email_address": "آدرس ایمیل",
 		"send_code": "ارسال کد",
 		"password": "رمز عبور",
+		"confirm_password": "تکرار رمز عبور",
 		"login": "ورود",
 		"register": "ثبت نام",
 		"remember_me": "مرا به خاطر بسپار",
 		"restore_password": "بازیابی رمز عبور",
 		"login_pending": "در حال بارگیری",
 		"login_success": "ورود موفقیت آمیز",
-		"login_error": "خطایی حین ورود رخ داد"
+		"login_error": "خطایی حین ورود رخ داد",
+		"name": "نام",
+		"last_name": "نام خانوادگی",
+		"phone_number": "شماره تلفن همراه",
+		"accept_the_terms": "قوانین را می پذیرم",
+		"error": {
+			"confirm_password": "تکرار رمز عبور صحیح نمیباشد",
+			"register": "خطایی حین ثبت نام رخ داد"
+		}
 	},
 	"error": {
 		"page_not_found": "صفحه مورد نظر پیدا نشد!"
