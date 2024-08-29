@@ -1,0 +1,12 @@
+on: push
+jobs:
+  git-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: 'azarfood/azarfood-frontend'
+          source_branch: 'main'
+          destination_repo: 'sina-salahshour/azarfood-frontend'
+          destination_branch: 'main'
