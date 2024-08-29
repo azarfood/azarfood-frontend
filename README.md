@@ -47,3 +47,25 @@ pnpm start
 For the dev and preview server, Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Vazirmant and Montserrat Google Fonts.
+
+---
+
+## Private Project Notice
+
+This repository contains proprietary and confidential information belonging to Azarfood. It is not intended for public use or distribution.
+
+## No License Granted
+
+No license, express or implied, is granted to any party to use, reproduce, distribute, or create derivative works from the contents of this repository. All rights are reserved by Azarfood.
+
+## Confidentiality
+
+The contents of this repository are confidential and may not be shared with any third party without explicit written permission from Azarfood.
+
+## Disclaimer
+
+By accessing this repository, you acknowledge that you have been authorized to do so and agree to comply with the terms outlined above.
+
+## Legal Notice
+
+This notice is subject to change without prior notice. It is your responsibility to check for updates.
