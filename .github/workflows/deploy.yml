@@ -6,8 +6,8 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3
         with:
-          source_repo: 'source_org/repository'
+          source_repo: 'git@github.com:azarfood/azarfood-frontend.git'
+          destination_repo: 'git@github.com:sina-salahshour/azarfood-frontend.git'
           source_branch: 'main'
-          destination_repo: 'destination_org/repository'
           destination_branch: 'main'
           ssh_private_key: ${{ secrets.SSH_KEY }}
