@@ -9,4 +9,5 @@ jobs:
           source_repo: 'git@github.com:azarfood/azarfood-frontend.git'
           source_branch: 'main'
           destination_repo: 'git@github.com:sina-salahshour/azarfood-frontend.git'
+          ssh_private_key: ${{ secrets.SSH_KEY }}
           destination_branch: 'main'
