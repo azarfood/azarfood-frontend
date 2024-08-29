@@ -54,7 +54,8 @@ You can run the command `nvm use` for switching to the correct node version.
 
 #### Using with direnv
 
-If you have `direnv` installed, you can enable the nvm env using the command `direnv allow` to change node version automatically when inside project root.
+If you have `direnv` installed, you can run the command `direnv allow` once.
+after that, node version will change automatically when inside project root.
 
 ---
 
