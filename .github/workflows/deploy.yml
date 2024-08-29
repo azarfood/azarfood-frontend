@@ -6,7 +6,7 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3
         with:
-          source_repo: 'azarfood/azarfood-frontend'
+          source_repo: 'git@github.com:azarfood/azarfood-frontend.git'
           source_branch: 'main'
-          destination_repo: 'sina-salahshour/azarfood-frontend'
+          destination_repo: 'git@github.com:sina-salahshour/azarfood-frontend.git'
           destination_branch: 'main'
