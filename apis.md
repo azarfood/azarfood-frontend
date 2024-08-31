@@ -235,6 +235,3 @@ type FoodDto = {
   ingredients: string;
 };
 ```
-
-- TODO: FOOD_COLLECTION_DISCOUNT
-- TODO: Food_DTO
