@@ -1,0 +1,526 @@
+openapi: 3.0.0
+info:
+  title: Azarfood APIs
+  version: 1.0.0
+
+paths:
+  /user/login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginDto'
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeDto'
+
+  /user/change-password:
+    post:
+      summary: Change user password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordDto'
+      responses:
+        '200':
+          description: Password changed successfully
+
+  /user/me:
+    get:
+      summary: Get current user information
+      responses:
+        '200':
+          description: User information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeDto'
+
+  /user/order-history:
+    get:
+      summary: Get user order history
+      responses:
+        '200':
+          description: Order history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderHistoryDto'
+
+  /user/order-list:
+    get:
+      summary: Get user order list
+      responses:
+        '200':
+          description: Order list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderListDto'
+
+  /user/transaction-history:
+    get:
+      summary: Get user transaction history
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Transaction history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionHistoryDto'
+
+  /user/balance:
+    get:
+      summary: Get user balance
+      responses:
+        '200':
+          description: User balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserBalanceDto'
+
+  /user/add-to-cart:
+    post:
+      summary: Add item to cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddToCartDto'
+      responses:
+        '200':
+          description: Item added to cart successfully
+
+  /user/cart:
+    get:
+      summary: Get user cart
+      responses:
+        '200':
+          description: User cart
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CartDto'
+    put:
+      summary: Update user cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CartDto'
+      responses:
+        '200':
+          description: Cart updated successfully
+
+  /user/current-order:
+    get:
+      summary: Get current order
+      responses:
+        '200':
+          description: Current order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentOrderDto'
+
+  /user/place-order:
+    post:
+      summary: Place an order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceOrderDto'
+      responses:
+        '200':
+          description: Order placed successfully
+
+  /user/check-discount-code:
+    post:
+      summary: Check discount code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscountCodeDto'
+      responses:
+        '200':
+          description: Discount code check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscountCodeResponse'
+
+  /foods/categories:
+    get:
+      summary: Get food categories
+      responses:
+        '200':
+          description: Food categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FoodCategoriesDto'
+
+  /foods/collections:
+    get:
+      summary: Get food collections
+      responses:
+        '200':
+          description: Food collections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FoodCollectionsDto'
+
+  /foods/search/restaurant:
+    get:
+      summary: Search restaurants
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: category
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Restaurant search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestaurantDto'
+
+  /foods/search/food:
+    get:
+      summary: Search foods
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: category
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Food search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FoodDto'
+
+  /foods/restaurant/{id}:
+    get:
+      summary: Get restaurant details
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Restaurant details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestaurantDto'
+
+  /foods/food/{id}:
+    get:
+      summary: Get food details
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Food details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodDto'
+
+components:
+  schemas:
+    LoginDto:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+    ChangePasswordDto:
+      type: object
+      properties:
+        old_password:
+          type: string
+        new_password:
+          type: string
+      required:
+        - old_password
+        - new_password
+
+    MeDto:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        national_code:
+          type: string
+        student_id:
+          type: string
+        id:
+          type: string
+
+    OrderHistoryDto:
+      type: object
+      properties:
+        id:
+          type: string
+        order_date:
+          type: string
+        total_price:
+          type: string
+        status:
+          type: string
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              count:
+                type: integer
+              price:
+                type: string
+
+    OrderListDto:
+      type: object
+      properties:
+        id:
+          type: string
+        order_date:
+          type: string
+        total_price:
+          type: string
+        status:
+          type: string
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              count:
+                type: integer
+              price:
+                type: string
+
+    TransactionHistoryDto:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [credit, debit]
+        date:
+          type: string
+        value:
+          type: string
+        balance:
+          type: string
+
+    UserBalanceDto:
+      type: object
+      properties:
+        balance:
+          type: string
+
+    AddToCartDto:
+      type: object
+      properties:
+        food_id:
+          type: string
+      required:
+        - food_id
+
+    CartDto:
+      type: object
+      properties:
+        id:
+          type: string
+        food:
+          $ref: '#/components/schemas/FoodDto'
+        count:
+          type: integer
+
+    CurrentOrderDto:
+      type: object
+      properties:
+        receipts:
+          type: object
+          properties:
+            restaurant:
+              $ref: '#/components/schemas/RestaurantDto'
+            cart:
+              type: array
+              items:
+                $ref: '#/components/schemas/CartDto'
+            total_price:
+              type: string
+
+    PlaceOrderDto:
+      type: object
+      properties:
+        restaurant_id:
+          type: string
+          nullable: true
+        discount_code:
+          type: string
+      required:
+        - discount_code
+
+    DiscountCodeDto:
+      type: object
+      properties:
+        discount_code:
+          type: string
+      required:
+        - discount_code
+
+    DiscountCodeResponse:
+      type: object
+      properties:
+        is_valid:
+          type: boolean
+        error_message:
+          type: string
+          nullable: true
+
+    FoodCategoriesDto:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        image_url:
+          type: string
+
+    FoodCollectionsDto:
+      type: object
+      properties:
+        label:
+          type: string
+        filter:
+          type: string
+        restaurants:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestaurantDto'
+          nullable: true
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodDto'
+          nullable: true
+        id:
+          type: string
+
+    RestaurantDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rating:
+          type: number
+        image_url:
+          type: string
+        banner_url:
+          type: string
+        address:
+          type: string
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodDto'
+
+    FoodDto:
+      type: object
+      properties:
+        id:
+          type: string
+        image_url:
+          type: string
+        name:
+          type: string
+        rating:
+          type: number
+        restaurant:
+          $ref: '#/components/schemas/RestaurantDto'
+        discount:
+          $ref: '#/components/schemas/DiscountDto'
+        ingredients:
+          type: string
+
+    DiscountDto:
+      type: object
+      # Add properties for DiscountDto as needed
