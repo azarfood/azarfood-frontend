@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -62,6 +63,71 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addComponents, theme }) => {
+      addComponents({
+        '.type-h1': {
+          fontWeight: '500',
+          fontSize: '1.5rem',
+          lineHeight: '1.75rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-h2': {
+          fontWeight: '500',
+          fontSize: '1.25rem',
+          lineHeight: '1.625rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-h3': {
+          fontWeight: '500',
+          fontSize: '1.0625rem',
+          lineHeight: '1.5rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-h4': {
+          fontWeight: '700',
+          fontSize: '0.9375rem',
+          lineHeight: '1.25rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-h5': {
+          fontWeight: '700',
+          fontSize: '0.9375rem',
+          lineHeight: '1.25rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-h6': {
+          fontWeight: '700',
+          fontSize: '0.9375rem',
+          lineHeight: '1.25rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-body': {
+          fontWeight: '400',
+          fontSize: '0.9375rem',
+          lineHeight: '1.25rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-control': {
+          fontWeight: '400',
+          fontSize: '0.9375rem',
+          lineHeight: '1.25rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-footnote': {
+          fontWeight: '400',
+          fontSize: '0.8125rem',
+          lineHeight: '1.125rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-control-label': {
+          fontWeight: '400',
+          fontSize: '0.8125rem',
+          lineHeight: '1.125rem',
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+      });
+    }),
+  ],
 };
 export default config;
