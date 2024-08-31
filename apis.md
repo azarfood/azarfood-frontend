@@ -162,7 +162,7 @@ type DiscountCodeResponse = {
 
 ## Food
 
-- GET `/food/categories`
+- GET `/foods/categories`
 
 ```ts
 type FoodCategoriesDto = {
@@ -172,7 +172,7 @@ type FoodCategoriesDto = {
 }[];
 ```
 
-- GET `/food/collections`
+- GET `/foods/collections`
 
   > baraye mesal `daraye takhfif`, `behtarin ha` va...
 
@@ -186,7 +186,7 @@ type FoodCollectionsDto = {
 };
 ```
 
-- GET `/food/search/restaurant`
+- GET `/foods/search/restaurant`
 
 ```ts
 type FoodSearchParams = {
@@ -197,7 +197,7 @@ type FoodSearchParams = {
 type RestaurantSearchResultDto = RestaurantDto[];
 ```
 
-- GET `/food/search/food`
+- GET `/foods/search/food`
 
 ```ts
 type FoodSearchParams = {
@@ -208,7 +208,7 @@ type FoodSearchParams = {
 type FoodSearchResultDto = FoodDto[];
 ```
 
-- GET `/food/restaurant/:id`
+- GET `/foods/restaurant/:id`
 
 ```ts
 type RestaurantDto = {
@@ -222,7 +222,7 @@ type RestaurantDto = {
 };
 ```
 
-- GET `/food/food/:id`
+- GET `/foods/food/:id`
 
 ```ts
 type FoodDto = {
