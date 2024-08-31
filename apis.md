@@ -146,7 +146,7 @@ type PlaceOrderDto = {
 };
 ```
 
-- POST `/check/discount_code`
+- POST `/user/check-discount-code`
 
 ```ts
 // request body
