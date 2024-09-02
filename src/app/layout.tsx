@@ -34,7 +34,13 @@ export default function RootLayout({
 
   return (
     <html lang={locale} dir={dir} className='h-full'>
-      <body className={cn(montserrat.variable, vazirmatn.variable, 'h-full')}>
+      <body
+        className={cn(
+          montserrat.variable,
+          vazirmatn.variable,
+          'h-full bg-foreground-100 font-vazirmatn',
+        )}
+      >
         <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
       </body>
     </html>
