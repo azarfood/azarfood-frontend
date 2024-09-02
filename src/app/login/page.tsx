@@ -13,10 +13,13 @@ import { useUnsafeI18n } from '@/locales/check-key';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
 
+// TODO: move error translate and error text to TextInput. add reveal and hide animations to error. add loading animation for button
+
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const t = useScopedI18n('auth');
   const errorT = useUnsafeI18n();
+
   type FormType = z.infer<typeof loginSchema>;
 
   async function onSubmit(form: FormType) {
