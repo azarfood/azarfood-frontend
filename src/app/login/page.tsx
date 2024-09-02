@@ -42,10 +42,15 @@ export default function LoginPage() {
   return (
     <div>
       <main className='relative mx-auto flex min-h-svh w-full max-w-[430px] flex-col bg-foreground-100 p-10'>
-        <Logo className='mx-auto mt-36 h-fit w-[247px]' />
-        <h1 className='text-secondary-10 type-h1 mt-32'>{t('heading')}</h1>
-        <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
+        <div className='flex flex-1 flex-col'>
+          <Logo className='m-auto h-fit w-[247px] pt-20' />
+          <h1 className='text-secondary-10 type-h1 mt-28'>{t('heading')}</h1>
+          <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
+        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='flex flex-1 flex-col'
+        >
           <TextInput
             {...register('username')}
             className='mt-12'
