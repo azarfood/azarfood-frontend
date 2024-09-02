@@ -9,16 +9,14 @@ import type { z } from 'zod';
 import Logo from '@/assets/icons/logo.svg';
 import { Button } from '@/components/button/button.component';
 import { TextInput } from '@/components/text-input/text-input.component';
-import { useUnsafeI18n } from '@/locales/check-key';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
 
-// TODO: move error translate and error text to TextInput. add reveal and hide animations to error. add loading animation for button
+// TODO:  add loading animation for button
 
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const t = useScopedI18n('auth');
-  const errorT = useUnsafeI18n();
 
   type FormType = z.infer<typeof loginSchema>;
 
@@ -52,19 +50,20 @@ export default function LoginPage() {
           className='flex flex-1 flex-col'
         >
           <TextInput
+            autoComplete='family-name'
             {...register('username')}
             className='mt-12'
             type='text'
             placeholder={t('username')}
+            errorKey={errors.username?.message}
           />
-          {errors.username?.message && errorT(errors.username.message)}
           <TextInput
             {...register('password')}
             className='mt-6'
             type='password'
             placeholder={t('password')}
+            errorKey={errors.password?.message}
           />
-          {errors.password?.message && errorT(errors.password.message)}
           <Link className='mt-3 underline' href='/support'>
             {t('forgot_password')}
           </Link>
