@@ -46,7 +46,7 @@ export default function LoginPage() {
           <TextInput
             autoComplete='family-name'
             {...register('username')}
-            className='mt-3'
+            className='mt-4'
             type='text'
             placeholder={t('username')}
             errorKey={errors.username?.message}
