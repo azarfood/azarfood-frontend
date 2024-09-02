@@ -12,8 +12,6 @@ import { TextInput } from '@/components/text-input/text-input.component';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
 
-// TODO:  add loading animation for button
-
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const t = useScopedI18n('auth');
@@ -23,6 +21,7 @@ export default function LoginPage() {
   async function onSubmit(form: FormType) {
     try {
       setIsSubmitting(true);
+      await new Promise((resolve) => setTimeout(resolve, 500));
       void form;
     } finally {
       setIsSubmitting(false);
@@ -68,7 +67,9 @@ export default function LoginPage() {
             {t('forgot_password')}
           </Link>
 
-          <Button className='mb-10 mt-8'>{t('login')}</Button>
+          <Button isLoading={isSubmitting} className='mb-10 mt-8'>
+            {t('login')}
+          </Button>
         </form>
         <Button
           disabled={isSubmitting}

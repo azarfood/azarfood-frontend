@@ -17,7 +17,6 @@ export function useRipple() {
     id: number;
     x: number;
     y: number;
-    animationComplete: boolean;
   }
   const [rippleInfos, setRippleInfos] = useState<RippleInfo[]>([]);
 
@@ -27,10 +26,7 @@ export function useRipple() {
   function onMouseDown(event: RippleMouseEvent) {
     const { offsetX, offsetY } = event.nativeEvent;
     const id = Date.now();
-    setRippleInfos((prev) => [
-      ...prev,
-      { id, x: offsetX, y: offsetY, animationComplete: false },
-    ]);
+    setRippleInfos((prev) => [...prev, { id, x: offsetX, y: offsetY }]);
   }
   const ripples = (
     <AnimatePresence>
