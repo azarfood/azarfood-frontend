@@ -1,5 +1,5 @@
-import type { Transition } from 'framer-motion';
-import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import type { ComponentProps } from 'react';
 
 import SpinnerIcon from '@/assets/icons/spinner.svg';
@@ -13,25 +13,29 @@ export interface ButtonProps extends ComponentProps<'button'> {
 const buttonVariants = {
   loading: {
     opacity: 0,
-    y: '-100%',
+    scale: 0.8,
   },
   idle: {
     opacity: 1,
-    y: '0%',
+    scale: 1,
+    transition: {
+      delay: 0.15,
+    },
   },
-} satisfies Transition;
+} satisfies Variants;
 const spinnerVariants = {
-  loading: {
+  enter: {
     opacity: 1,
     y: '0%',
+    transition: {
+      delay: 0.15,
+    },
   },
-  idle: {
+  exit: {
     opacity: 0,
-    y: '100%',
+    y: '50%',
   },
-} satisfies Transition;
-
-// TODO: remove spinner on animate exit
+} satisfies Variants;
 
 export function Button({
   className,
@@ -58,14 +62,19 @@ export function Button({
         {children}
       </motion.div>
 
-      <motion.div
-        variants={spinnerVariants}
-        animate={isLoading ? 'loading' : 'idle'}
-        style={{ y: '100%', opacity: '0' }}
-        className='pointer-events-none absolute inset-0 flex items-center justify-center'
-      >
-        <SpinnerIcon className='h-full py-2' />
-      </motion.div>
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            variants={spinnerVariants}
+            animate='enter'
+            exit='exit'
+            initial='exit'
+            className='pointer-events-none absolute inset-0 flex items-center justify-center'
+          >
+            <SpinnerIcon className='h-full py-2' />
+          </motion.div>
+        )}
+      </AnimatePresence>
       {ripples}
     </button>
   );

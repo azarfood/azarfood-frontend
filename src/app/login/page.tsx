@@ -21,7 +21,7 @@ export default function LoginPage() {
   async function onSubmit(form: FormType) {
     try {
       setIsSubmitting(true);
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       void form;
     } finally {
       setIsSubmitting(false);
