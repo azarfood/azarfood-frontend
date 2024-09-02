@@ -25,7 +25,7 @@ export default function LoginPage() {
   async function onSubmit(form: FormType) {
     try {
       setIsSubmitting(true);
-      alert(form); // login logic
+      void form;
     } finally {
       setIsSubmitting(false);
     }
@@ -65,14 +65,13 @@ export default function LoginPage() {
           </Link>
 
           <Button className='mb-10 mt-8'>{t('login')}</Button>
-
-          <Button
-            disabled={isSubmitting}
-            className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
-          >
-            {t('support')}
-          </Button>
         </form>
+        <Button
+          disabled={isSubmitting}
+          className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
+        >
+          {t('support')}
+        </Button>
       </main>
     </div>
   );
