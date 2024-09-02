@@ -38,27 +38,22 @@ export default function LoginPage() {
 
   return (
     <div>
-      <main className='relative mx-auto flex min-h-svh w-full max-w-[430px] flex-col bg-foreground-100 p-10'>
-        <div className='flex flex-1 flex-col'>
-          <Logo className='m-auto h-fit w-[247px] pt-20' />
-          <h1 className='text-secondary-10 type-h1 mt-28'>{t('heading')}</h1>
-          <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
-        </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className='flex flex-1 flex-col'
-        >
+      <main className='relative mx-auto flex min-h-svh w-full max-w-[430px] flex-col bg-foreground-100 px-10 pb-20'>
+        <Logo className='mx-auto mt-[88px] h-fit w-[247px]' />
+        <h1 className='text-secondary-10 type-h1 mt-16'>{t('heading')}</h1>
+        <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
           <TextInput
             autoComplete='family-name'
             {...register('username')}
-            className='mt-12'
+            className='mt-3'
             type='text'
             placeholder={t('username')}
             errorKey={errors.username?.message}
           />
           <TextInput
             {...register('password')}
-            className='mt-6'
+            className='mt-3'
             type='password'
             placeholder={t('password')}
             errorKey={errors.password?.message}
@@ -67,7 +62,7 @@ export default function LoginPage() {
             {t('forgot_password')}
           </Link>
 
-          <Button isLoading={isSubmitting} className='mb-10 mt-8'>
+          <Button isLoading={isSubmitting} className='mb-5 mt-8'>
             {t('login')}
           </Button>
         </form>
