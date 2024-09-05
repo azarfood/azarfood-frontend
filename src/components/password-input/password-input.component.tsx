@@ -42,7 +42,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             animate='enter'
             type='button'
             key={inputType}
-            className='absolute left-1 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center p-2'
+            className='absolute left-1 top-[22px] flex size-10 -translate-y-1/2 items-center justify-center p-2'
             onClick={() => {
               setInputType(inputType === 'text' ? 'password' : 'text');
               inputRef.current?.focus();
