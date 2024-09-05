@@ -1,6 +1,8 @@
 'use client';
+import type { Variants } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
-import { type ComponentPropsWithRef, forwardRef } from 'react';
+import type { ComponentPropsWithRef } from 'react';
+import { forwardRef } from 'react';
 
 import { useUnsafeI18n } from '@/locales/check-key';
 import { cn } from '@/utils/cn';
@@ -8,6 +10,11 @@ import { cn } from '@/utils/cn';
 export interface TextInputProps extends ComponentPropsWithRef<'input'> {
   errorKey?: string;
 }
+
+const errorMessageVariants: Variants = {
+  enter: { height: 'auto', opacity: [0, 1], y: 0, marginTop: '4px' },
+  exit: { height: '0px', opacity: 0, y: 12, marginTop: '0px' },
+};
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   function TextInput({ className, errorKey, ...props }, ref) {
@@ -28,13 +35,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {errorKey && (
             <motion.div
               className='type-control-label text-error-100'
-              animate={{ height: 'auto', opacity: [0, 1], y: 0 }}
-              style={{
-                height: '0px',
-                opacity: 0,
-                y: 12,
+              variants={errorMessageVariants}
+              animate='enter'
+              initial='exit'
+              exit='exit'
+              transition={{
+                ease: 'easeInOut',
               }}
-              exit={{ height: '0px', opacity: 0, y: 12 }}
             >
               {errorT(errorKey)}
             </motion.div>
