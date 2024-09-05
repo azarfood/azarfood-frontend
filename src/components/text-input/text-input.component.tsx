@@ -11,10 +11,10 @@ export interface TextInputProps extends ComponentPropsWithRef<'input'> {
   errorKey?: string;
 }
 
-const errorMessageVariants: Variants = {
+const errorMessageVariants = {
   enter: { height: 'auto', opacity: [0, 1], y: 0, marginTop: '4px' },
   exit: { height: '0px', opacity: 0, y: 12, marginTop: '0px' },
-};
+} satisfies Variants;
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   function TextInput({ className, errorKey, ...props }, ref) {

@@ -8,6 +8,7 @@ import type { z } from 'zod';
 
 import Logo from '@/assets/icons/logo.svg';
 import { Button } from '@/components/button/button.component';
+import { PasswordInput } from '@/components/password-input/password-input.component';
 import { TextInput } from '@/components/text-input/text-input.component';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
@@ -44,17 +45,15 @@ export default function LoginPage() {
         <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
           <TextInput
-            autoComplete='family-name'
             {...register('username')}
             className='mt-4'
             type='text'
             placeholder={t('username')}
             errorKey={errors.username?.message}
           />
-          <TextInput
+          <PasswordInput
             {...register('password')}
             className='mt-3'
-            type='password'
             placeholder={t('password')}
             errorKey={errors.password?.message}
           />
