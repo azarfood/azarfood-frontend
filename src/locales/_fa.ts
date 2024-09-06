@@ -1,5 +1,5 @@
 export default {
-  hello: 'سلام',
+  hello: 'سلام {first_name} {last_name}',
   auth: {
     heading: 'سلام. خوش اومدی!',
     caption: 'برای استفاده از خدمات وبسایت، لطفا وارد شو.',

@@ -1,15 +1,13 @@
 import { createContext } from 'react';
 
-import type { UserDto } from '@/services/user/dtos/user.dto';
-
 interface AuthContextType {
-  user: UserDto | null;
-  setUser(user: UserDto): void;
+  token: string | null;
+  setToken(token: string): void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
-  user: null,
-  setUser: () => {
+  token: null,
+  setToken: () => {
     throw new Error('you need to setup auth provider');
   },
 });

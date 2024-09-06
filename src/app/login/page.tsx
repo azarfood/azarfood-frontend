@@ -14,15 +14,14 @@ import { PasswordInput } from '@/components/password-input/password-input.compon
 import { TextInput } from '@/components/text-input/text-input.component';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
-import { StorageService } from '@/services/storage/storage.service';
 import { UserService } from '@/services/user/user.service';
-import { useAuth } from '@/stores/providers/auth-provider';
+import { useAuth } from '@/stores/providers/auth-provider/auth-provider';
 
 // TODO: when logged in, redirect the user to last visited page
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-  const { setUser } = useAuth();
+  const { setToken } = useAuth();
   const t = useScopedI18n('auth');
 
   type FormType = z.infer<typeof loginSchema>;
@@ -30,16 +29,15 @@ export default function LoginPage() {
   async function login(form: FormType) {
     try {
       setIsSubmitting(true);
-      const response = await UserService.login({
-        username: form.username,
-        password: form.password,
-      });
-      if (response.success) {
-        StorageService.user_token.set(response.data.access_token);
-        setUser(response.data.user);
+      try {
+        const response = await UserService.login({
+          username: form.username,
+          password: form.password,
+        });
+        setToken(response.data.access_token);
         router.push('/');
-      } else {
-        toast.error(response.message);
+      } catch (err) {
+        if (err instanceof Error) toast.error(err.message);
       }
     } finally {
       setIsSubmitting(false);

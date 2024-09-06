@@ -3,10 +3,9 @@ import '@/configs/globals.css';
 import Locale from 'intl-locale-textinfo-polyfill';
 import type { Metadata } from 'next';
 import { Montserrat, Vazirmatn } from 'next/font/google';
-import { Toaster } from 'react-hot-toast';
 
 import { I18nProviderClient } from '@/locales/client';
-import { AuthProvider } from '@/stores/providers/auth-provider';
+import { Providers } from '@/stores/providers/providers';
 import { cn } from '@/utils/cn';
 
 const montserrat = Montserrat({
@@ -44,10 +43,7 @@ export default function RootLayout({
         )}
       >
         <I18nProviderClient locale={locale}>
-          <AuthProvider>
-            {children}
-            <Toaster />
-          </AuthProvider>
+          <Providers>{children}</Providers>
         </I18nProviderClient>
       </body>
     </html>
