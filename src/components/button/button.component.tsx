@@ -41,6 +41,7 @@ export function Button({
   className,
   children,
   isLoading,
+  disabled,
   ...props
 }: ButtonProps) {
   const { onMouseDown, ripples } = useRipple();
@@ -51,6 +52,7 @@ export function Button({
         'type-control relative flex min-h-11 items-center justify-center overflow-hidden rounded-lg bg-primary-100 px-4 text-foreground-100 shadow shadow-secondary-20',
         className,
       )}
+      disabled={disabled == null ? isLoading : disabled}
       onMouseDown={onMouseDown}
       {...props}
     >
