@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -16,6 +17,7 @@ import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
 import { UserService } from '@/services/user/user.service';
 import { useAuth } from '@/stores/providers/auth-provider/auth-provider';
+import { errorSchema } from '@/types/dto/error.dto';
 
 // TODO: when logged in, redirect the user to last visited page
 export default function LoginPage() {
@@ -34,10 +36,15 @@ export default function LoginPage() {
           username: form.username,
           password: form.password,
         });
-        setToken(response.data.access_token);
+        setToken(response.result.access_token);
         router.push('/');
-      } catch (err) {
-        if (err instanceof Error) toast.error(err.message);
+      } catch (err: unknown) {
+        const error = errorSchema.safeParse(
+          (err as AxiosError)?.response?.data,
+        );
+        if (error.success) {
+          toast.error(error.data.message);
+        }
       }
     } finally {
       setIsSubmitting(false);

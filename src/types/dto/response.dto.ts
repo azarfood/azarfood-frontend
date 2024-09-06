@@ -1,4 +1,4 @@
 export interface ResponseDto<T> {
   success: true;
-  data: T;
+  result: T;
 }

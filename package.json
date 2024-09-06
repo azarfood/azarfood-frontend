@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@tanstack/react-query": "^5.55.0",
     "axios": "^1.7.5",
+    "axios-mock-adapter": "^2.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.30",
     "intl-locale-textinfo-polyfill": "^2.1.1",

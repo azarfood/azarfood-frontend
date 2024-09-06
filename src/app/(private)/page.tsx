@@ -23,8 +23,8 @@ export default function Home() {
     <main className='flex h-full w-full items-center justify-center gap-4'>
       <div className='text-secondary-100'>
         {t('hello', {
-          first_name: data.data.first_name,
-          last_name: data.data.last_name,
+          first_name: data.result.first_name,
+          last_name: data.result.last_name,
         })}
       </div>
       <span className='block h-fit w-fit -rotate-90 text-primary-100'>:-)</span>
