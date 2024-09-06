@@ -60,40 +60,38 @@ export default function LoginPage() {
   });
 
   return (
-    <div>
-      <main className='relative mx-auto flex min-h-svh w-full max-w-[430px] flex-col bg-foreground-100 px-10 pb-20'>
-        <Logo className='mx-auto mt-[88px] h-fit w-[247px]' />
-        <h1 className='text-secondary-10 type-h1 mt-16'>{t('heading')}</h1>
-        <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
-        <form onSubmit={handleSubmit(login)} className='flex flex-col'>
-          <TextInput
-            {...register('username')}
-            className='mt-4'
-            type='text'
-            placeholder={t('username')}
-            errorKey={errors.username?.message}
-          />
-          <PasswordInput
-            {...register('password')}
-            className='mt-3'
-            placeholder={t('password')}
-            errorKey={errors.password?.message}
-          />
-          <Link className='mt-3 underline' href='/support'>
-            {t('forgot_password')}
-          </Link>
+    <main className='relative mx-auto flex min-h-svh w-full max-w-[430px] flex-col bg-foreground-100 px-10 pb-20'>
+      <Logo className='mx-auto mt-[88px] h-fit w-[247px]' />
+      <h1 className='text-secondary-10 type-h1 mt-16'>{t('heading')}</h1>
+      <h2 className='type-body mt-1 text-primary-100'>{t('caption')}</h2>
+      <form onSubmit={handleSubmit(login)} className='flex flex-col'>
+        <TextInput
+          {...register('username')}
+          className='mt-4'
+          type='text'
+          placeholder={t('username')}
+          errorKey={errors.username?.message}
+        />
+        <PasswordInput
+          {...register('password')}
+          className='mt-3'
+          placeholder={t('password')}
+          errorKey={errors.password?.message}
+        />
+        <Link className='mt-3 underline' href='/support'>
+          {t('forgot_password')}
+        </Link>
 
-          <Button isLoading={isSubmitting} className='mb-5 mt-8'>
-            {t('login')}
-          </Button>
-        </form>
-        <Button
-          disabled={isSubmitting}
-          className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
-        >
-          {t('support')}
+        <Button isLoading={isSubmitting} className='mb-5 mt-8'>
+          {t('login')}
         </Button>
-      </main>
-    </div>
+      </form>
+      <Button
+        disabled={isSubmitting}
+        className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
+      >
+        {t('support')}
+      </Button>
+    </main>
   );
 }

@@ -13,4 +13,19 @@ export default {
       password_empty: 'رمز عبور نمیتواند خالی باشد',
     },
   },
+  transaction_history: {
+    date: 'تاریخ',
+    time: 'ساعت',
+    balance: 'موجودی',
+    price: 'مبلغ',
+    remaining: 'باقی مانده',
+    wallet: 'کیف پول',
+    increase_balance: 'افزایش موجودی',
+    currency_toman: 'تومان',
+    filter_date: {
+      all: 'همه',
+      this_week: 'این هفته',
+      specific_date: 'بازه‌ی خاص',
+    },
+  },
 } as const;

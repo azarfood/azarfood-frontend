@@ -1,14 +1,10 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-
+import { httpMock } from '@/services/http/http.mock';
 import type { ErrorDto } from '@/types/dto/error.dto';
 
 import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
-
-const mock = new MockAdapter(axios, {
-  delayResponse: 1000,
-});
+import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
+import { transactionMock } from './transaction.mock';
 
 const loginResponse: LoginResponseDto = {
   success: true,
@@ -36,29 +32,38 @@ const meResponse: MeResponseDto = {
   },
 };
 
-mock
+httpMock
   .onPost('/login', {
     username: loginResponse.result.user.student_id,
     password: loginResponse.result.user.national_code,
   })
   .reply(200, loginResponse);
-mock.onPost('/login').reply(400, {
+httpMock.onPost('/login').reply(400, {
   code: '401',
   message: 'نام کاربری یا رمز عبور اشتباه میباشد',
   success: false,
 } satisfies ErrorDto);
 
-mock
-  .onGet('/user/me', {
-    headers: {
-      asymmetricMatch: (headers: Record<string, string>) => {
-        return headers.Authorization === loginResponse.result.access_token;
-      },
+const privateRouteOptions = {
+  headers: {
+    asymmetricMatch: (headers: Record<string, string>) => {
+      return headers.Authorization === loginResponse.result.access_token;
     },
-  })
-  .reply(200, meResponse);
-mock.onGet('/user/me').reply(401, {
+  },
+};
+
+httpMock.onGet('/user/me', privateRouteOptions).reply(200, meResponse);
+httpMock.onGet('/user/me').reply(401, {
   code: '401',
   message: 'نشست منقضی شده و یا اطلاعات نامعتبر',
   success: false,
 } satisfies ErrorDto);
+
+const transactionHistoryResponse: TransactionHistoryResponseDto = {
+  success: true,
+  result: transactionMock,
+};
+
+httpMock
+  .onGet('/user/transaction-history', privateRouteOptions)
+  .reply(200, transactionHistoryResponse);

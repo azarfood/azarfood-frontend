@@ -44,7 +44,7 @@ export function useRipple() {
             x: '-50%',
             y: '-50%',
           }}
-          className='pointer-events-none absolute aspect-square w-full rounded-full bg-secondary-40'
+          className='pointer-events-none absolute aspect-square w-full rounded-full bg-secondary-40 [button.dark_&]:bg-foreground-40'
         />
       ))}
     </AnimatePresence>
