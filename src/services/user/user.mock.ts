@@ -5,6 +5,8 @@ import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
 import { transactionMock } from './transaction.mock';
+import { ResponseDto } from '@/types/dto/response.dto';
+import { UserBalanceDto } from './dtos/user-balance.dto';
 
 const loginResponse: LoginResponseDto = {
   success: true,
@@ -53,11 +55,6 @@ const privateRouteOptions = {
 };
 
 httpMock.onGet('/user/me', privateRouteOptions).reply(200, meResponse);
-httpMock.onGet('/user/me').reply(401, {
-  code: '401',
-  message: 'نشست منقضی شده و یا اطلاعات نامعتبر',
-  success: false,
-} satisfies ErrorDto);
 
 const transactionHistoryResponse: TransactionHistoryResponseDto = {
   success: true,
@@ -67,3 +64,28 @@ const transactionHistoryResponse: TransactionHistoryResponseDto = {
 httpMock
   .onGet('/user/transaction-history', privateRouteOptions)
   .reply(200, transactionHistoryResponse);
+
+const balanceResponse: ResponseDto<UserBalanceDto> = {
+  success: true,
+  result: {
+    balance: 100000,
+  },
+};
+
+httpMock
+  .onGet('/user/balance', privateRouteOptions)
+  .reply(200, balanceResponse);
+
+httpMock
+  .onGet('/*', {
+    headers: {
+      asymmetricMatch: (headers: Record<string, string>) => {
+        return headers.Authorization !== loginResponse.result.access_token;
+      },
+    },
+  })
+  .reply(401, {
+    code: '401',
+    message: 'نشست منقضی شده و یا اطلاعات نامعتبر',
+    success: false,
+  } satisfies ErrorDto);

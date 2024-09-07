@@ -1,9 +1,12 @@
 import './user.mock';
 
+import type { ResponseDto } from '@/types/dto/response.dto';
+
 import { HttpService } from '../http/http.service';
 import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
+import type { UserBalanceDto } from './dtos/user-balance.dto';
 import type { UserLoginDto } from './dtos/user-login.dto';
 
 export class UserService {
@@ -21,6 +24,12 @@ export class UserService {
     const response = await HttpService.get<TransactionHistoryResponseDto>(
       '/user/transaction-history',
     );
+    return response.data;
+  }
+
+  public static async getBalance(): Promise<ResponseDto<UserBalanceDto>> {
+    const response =
+      await HttpService.get<ResponseDto<UserBalanceDto>>('/user/balance');
     return response.data;
   }
 }

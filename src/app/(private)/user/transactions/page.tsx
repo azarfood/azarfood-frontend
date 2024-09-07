@@ -2,16 +2,14 @@
 
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
 import CalendarIcon from '@/assets/icons/calendar.svg';
-import CreditCardIcon from '@/assets/icons/credit-card.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
 import SpinnerIcon from '@/assets/icons/spinner.svg';
 import { Button } from '@/components/button/button.component';
 import { DateRangePicker } from '@/components/date-range-picker/date-range-picker.component';
+import { UserWallet } from '@/components/user-wallet/user-wallet.component';
 import { useScopedI18n } from '@/locales/client';
 import type { Transaction } from '@/services/user/entities/transaction';
 import { UserService } from '@/services/user/user.service';
@@ -46,7 +44,6 @@ function TransactionRow({ transaction }: TransactionRowProps) {
 
 export default function TransactionsPage() {
   const t = useScopedI18n('transaction_history');
-  const router = useRouter();
   const { data, isPending, isError } = useQuery({
     queryKey: ['/user/transaction-history'],
     queryFn: UserService.getTransactionHistory,
@@ -63,25 +60,7 @@ export default function TransactionsPage() {
 
   return (
     <>
-      <div className='mt-6 flex h-32 w-full flex-col overflow-hidden rounded-lg bg-secondary-5 shadow'>
-        <h1 className='type-h2 flex h-11 w-full items-center bg-secondary-100 pr-4 text-foreground-100'>
-          {t('wallet')}
-          <Button className='dark mr-auto bg-transparent' onClick={router.back}>
-            <ArrowLeftIcon />
-          </Button>
-        </h1>
-
-        <div className='flex flex-1 flex-col px-5 pb-4 pt-3'>
-          <div className='flex items-center gap-1'>
-            <CreditCardIcon /> {t('balance')}:
-          </div>
-
-          <div className='mr-auto mt-auto'>
-            {priceFormatter.format(100000)} {t('currency_toman')}
-          </div>
-        </div>
-      </div>
-
+      <UserWallet />
       <div className='mt-5 flex'>
         <Button
           className='dark type-control min-h-6 rounded bg-secondary-100 px-2'
