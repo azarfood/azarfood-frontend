@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
 
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
@@ -9,7 +10,36 @@ import PlusIcon from '@/assets/icons/plus.svg';
 import SpinnerIcon from '@/assets/icons/spinner.svg';
 import { Button } from '@/components/button/button.component';
 import { useScopedI18n } from '@/locales/client';
+import type { Transaction } from '@/services/user/entities/transaction';
 import { UserService } from '@/services/user/user.service';
+import { priceFormatter } from '@/utils/price-formatter';
+
+interface TransactionRowProps {
+  transaction: Transaction;
+}
+function TransactionRow({ transaction }: TransactionRowProps) {
+  const oldBalance =
+    +transaction.balance +
+    +transaction.value * (transaction.type === 'credit' ? -1 : 1);
+  const date = dayjs(transaction.date);
+  return (
+    <tr
+      key={transaction.id}
+      className='h-8 border-b border-solid border-b-secondary-5'
+    >
+      <td>{date.format('YYYY/MM/DD')}</td>
+      <td>{date.format('HH:mm')}</td>
+      <td>{priceFormatter.format(oldBalance)}</td>
+      <td
+        className='text-success-100 data-[type=debit]:text-error-100'
+        data-type={transaction.type}
+      >
+        {priceFormatter.format(+transaction.value)}
+      </td>
+      <td>{priceFormatter.format(+transaction.balance)}</td>
+    </tr>
+  );
+}
 
 export default function TransactionsPage() {
   const t = useScopedI18n('transaction_history');
@@ -43,7 +73,7 @@ export default function TransactionsPage() {
           </div>
 
           <div className='mr-auto mt-auto'>
-            {100000} {t('currency_toman')}
+            {priceFormatter.format(100000)} {t('currency_toman')}
           </div>
         </div>
       </div>
@@ -56,9 +86,9 @@ export default function TransactionsPage() {
           </div>
         </Button>
       </div>
-      <div className='relative mx-auto mb-5 mt-5 w-fit rounded-lg bg-secondary-5 px-2'>
+      <div className='relative mb-5 mt-5 w-full rounded-lg bg-secondary-5 px-2'>
         <div className='absolute left-0 right-0 top-10 h-0.5 -translate-y-full bg-secondary-40'></div>
-        <table className='px-40 text-center'>
+        <table className='w-full px-40 text-center'>
           <thead>
             <tr className='border-b-secondary-10 h-10'>
               <td>{t('date')}</td>
@@ -70,25 +100,7 @@ export default function TransactionsPage() {
           </thead>
           <tbody>
             {data.result.map((transaction) => (
-              <tr
-                key={transaction.id}
-                className='h-8 border-b border-solid border-b-secondary-5'
-              >
-                <td>{transaction.date}</td>
-                <td>{transaction.date}</td>
-                <td>
-                  {+transaction.balance +
-                    +transaction.value *
-                      (transaction.type === 'credit' ? 1 : -1)}
-                </td>
-                <td
-                  className='text-success-100 data-[type=debit]:text-error-100'
-                  data-type={transaction.type}
-                >
-                  {transaction.value}
-                </td>
-                <td>{transaction.balance}</td>
-              </tr>
+              <TransactionRow transaction={transaction} key={transaction.id} />
             ))}
           </tbody>
         </table>
