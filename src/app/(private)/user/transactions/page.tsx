@@ -3,12 +3,15 @@
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
+import CalendarIcon from '@/assets/icons/calendar.svg';
 import CreditCardIcon from '@/assets/icons/credit-card.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
 import SpinnerIcon from '@/assets/icons/spinner.svg';
 import { Button } from '@/components/button/button.component';
+import { DateRangePicker } from '@/components/date-range-picker/date-range-picker.component';
 import { useScopedI18n } from '@/locales/client';
 import type { Transaction } from '@/services/user/entities/transaction';
 import { UserService } from '@/services/user/user.service';
@@ -25,7 +28,7 @@ function TransactionRow({ transaction }: TransactionRowProps) {
   return (
     <tr
       key={transaction.id}
-      className='h-8 border-b border-solid border-b-secondary-5'
+      className='type-control-label h-8 border-b border-solid border-b-secondary-5 text-secondary-80'
     >
       <td>{date.format('YYYY/MM/DD')}</td>
       <td>{date.format('HH:mm')}</td>
@@ -48,6 +51,7 @@ export default function TransactionsPage() {
     queryKey: ['/user/transaction-history'],
     queryFn: UserService.getTransactionHistory,
   });
+  const [showDatePicker, setShowDatePicker] = useState(false);
 
   if (isPending || isError) {
     return (
@@ -79,6 +83,14 @@ export default function TransactionsPage() {
       </div>
 
       <div className='mt-5 flex'>
+        <Button
+          className='dark type-control min-h-6 rounded bg-secondary-100 px-2'
+          onClick={() => setShowDatePicker((prev) => !prev)}
+        >
+          <div className='flex w-full items-center justify-center gap-2'>
+            {t('filter_date.specific_date')} <CalendarIcon className='size-3' />
+          </div>
+        </Button>
         <Button className='dark type-control mr-auto min-h-6 rounded bg-secondary-100 px-2'>
           <div className='flex w-full items-center justify-center gap-1'>
             <PlusIcon className='size-3' />
@@ -86,6 +98,11 @@ export default function TransactionsPage() {
           </div>
         </Button>
       </div>
+
+      <DateRangePicker
+        show={showDatePicker}
+        onClose={() => setShowDatePicker(false)}
+      />
       <div className='relative mb-5 mt-5 w-full rounded-lg bg-secondary-5 px-2'>
         <div className='absolute left-0 right-0 top-10 h-0.5 -translate-y-full bg-secondary-40'></div>
         <table className='w-full px-40 text-center'>
