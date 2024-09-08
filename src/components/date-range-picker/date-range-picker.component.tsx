@@ -41,7 +41,7 @@ export function DateRangePicker({
           animate='enter'
         >
           <button className='absolute inset-0' onClick={onClose}></button>
-          <CalendarProvider round='x1' accentColor='#000022'>
+          <CalendarProvider locale='fa' round='x1' accentColor='#000022'>
             <Calendar
               className='relative'
               onChange={(e) => {
