@@ -1,12 +1,12 @@
 import { httpMock } from '@/services/http/http.mock';
 import type { ErrorDto } from '@/types/dto/error.dto';
+import type { ResponseDto } from '@/types/dto/response.dto';
 
 import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
+import type { UserBalanceDto } from './dtos/user-balance.dto';
 import { transactionMock } from './transaction.mock';
-import { ResponseDto } from '@/types/dto/response.dto';
-import { UserBalanceDto } from './dtos/user-balance.dto';
 
 const loginResponse: LoginResponseDto = {
   success: true,

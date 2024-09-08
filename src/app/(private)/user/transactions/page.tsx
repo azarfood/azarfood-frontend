@@ -2,7 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { LayoutGroup, motion } from 'framer-motion';
 import type { Dispatch, SetStateAction } from 'react';
 import { useMemo, useState } from 'react';
 
@@ -10,13 +9,13 @@ import CalendarIcon from '@/assets/icons/calendar.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
 import SpinnerIcon from '@/assets/icons/spinner.svg';
 import { Button } from '@/components/button/button.component';
+import { ButtonGroup } from '@/components/button-group/button-group.component';
 import { DateRangePicker } from '@/components/date-range-picker/date-range-picker.component';
 import { UserWallet } from '@/components/user-wallet/user-wallet.component';
 import { useScopedI18n } from '@/locales/client';
 import type { Transaction } from '@/services/user/entities/transaction';
 import { UserService } from '@/services/user/user.service';
 import { priceFormatter } from '@/utils/price-formatter';
-import { ButtonGroup } from '@/components/button-group/button-group.component';
 
 interface TransactionRowProps {
   transaction: Transaction;
