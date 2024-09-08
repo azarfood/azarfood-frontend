@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import type { Variants } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Calendar, CalendarProvider } from 'zaman';
@@ -45,7 +46,13 @@ export function DateRangePicker({
             <Calendar
               className='relative'
               onChange={(e) => {
-                onChange?.(e);
+                // the library treats the first selected date as "from" and the latter as "to" so it needs to be checked before forwarding.
+                const from = dayjs(e.from);
+                const to = dayjs(e.to);
+                onChange?.({
+                  from: dayjs.min(from, to).toDate(),
+                  to: dayjs.max(from, to).toDate(),
+                });
                 onClose?.();
               }}
               range
