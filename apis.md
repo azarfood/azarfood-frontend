@@ -1,5 +1,21 @@
 # Azarfood Apis
 
+```ts
+type ResponseDto<T> = {
+  success: true;
+  message: string;
+  result: T;
+};
+type ErrorDto<T> = {
+  success: false;
+  message?: string;
+};
+type PaginationParams = {
+  perPage: number;
+  page: number;
+};
+```
+
 ## User
 
 - POST `/user/login`
@@ -11,7 +27,9 @@ type LoginDto = {
   password: string;
 };
 
-type LoginResponseDto = MeDto;
+type LoginResponseDto = {
+  token: string;
+};
 ```
 
 - POST `/user/change-password`
@@ -27,13 +45,13 @@ type ChangePasswordDto = {
 - GET `/user/me`
 
 ```ts
-type MeDto = {
+type UserDto = {
   first_name: string;
   last_name: string;
   national_code: string;
-  student_id: string;
-
-  id: string; // hala age dashte bashim
+  student_code: string;
+  type: 'student' | 'proffesor' | 'teacher';
+  avatar: string;
 };
 ```
 
@@ -42,9 +60,10 @@ type MeDto = {
 ```ts
 type OrderHistoryDto = {
   id: string;
-  order_date: string;
-  total_price: string;
-  status: string;
+  date: string;
+  total_cost: string;
+  status: 'delivered' | 'pending';
+  meal: 'lunch' | 'dinner';
 
   orders: {
     name: string;
@@ -59,9 +78,10 @@ type OrderHistoryDto = {
 ```ts
 type OrderListDto = {
   id: string;
-  order_date: string;
-  total_price: string;
-  status: string;
+  date: string;
+  total_cost: string;
+  status: 'pending';
+  meal: 'lunch' | 'dinner';
 
   orders: {
     name: string;
@@ -75,15 +95,15 @@ type OrderListDto = {
 
 ```ts
 type TransactionHistoryParams = {
-  date: string;
-};
+  dateFrom?: string;
+  dateTo?: string;
+} & PaginationParams;
 
 type TransactionHistoryDto = {
   id: string;
-  type: 'credit' | 'debit';
+  type: 'positive' | 'negative';
   date: string;
-  value: string;
-  balance: string;
+  amount: string;
 };
 ```
 
@@ -95,96 +115,63 @@ type UserBalanceDto = {
 };
 ```
 
-- POST `/user/add-to-cart`
-
-```ts
-type AddToCartDto = {
-  food_id: string;
-};
-```
-
-- GET `/user/cart`
-
-```ts
-type CartDto = {
-  id: string;
-  food: FoodDto;
-  count: number;
-}[];
-```
-
-- PUT `/user/cart`
-
-```ts
-// request body
-type CartDto = {
-  id: string;
-  food_id: string;
-  count: number;
-}[];
-```
-
-- GET `/user/current-order`
-
-```ts
-type CurrentOrderDto = {
-  receipts: {
-    restaurant: RestaurantDto;
-    cart: CartDto;
-    total_price: string;
-  };
-};
-```
-
 - POST `/user/place-order`
 
 ```ts
 // request body
 type PlaceOrderDto = {
-  restaurant_id: string | null;
-  discount_code: string;
+  carts: {
+    order_date: string;
+    meal: 'dinner' | 'lunch';
+
+    orders: {
+      id: string;
+      count: number;
+    }[];
+  }[];
 };
 ```
 
-- POST `/user/check-discount-code`
+- POST `/user/charge`
 
 ```ts
 // request body
-type DiscountCodeDto = {
-  discount_code: string;
-};
-
-type DiscountCodeResponse = {
-  is_valid: boolean;
-  error_message: string | null;
+type UserChargeDto = {
+  amount: number;
 };
 ```
+
+<!---->
+<!-- - POST `/user/check-discount-code` -->
+<!---->
+<!-- ```ts -->
+<!-- // request body -->
+<!-- type DiscountCodeDto = { -->
+<!--   discount_code: string; -->
+<!-- }; -->
+<!---->
+<!-- type DiscountCodeResponse = { -->
+<!--   is_valid: boolean; -->
+<!--   error_message: string | null; -->
+<!-- }; -->
+<!-- ``` -->
 
 ## Food
 
-- GET `/foods/categories`
-
-```ts
-type FoodCategoriesDto = {
-  name: string;
-  id: string;
-  image_url: string;
-}[];
-```
-
-- GET `/foods/collections`
-
-  > baraye mesal `daraye takhfif`, `behtarin ha` va...
-
-```ts
-type FoodCollectionsDto = {
-  label: string; // example: "دارای تخفیف"
-  filter: string; // example: "?discount=true&tab=restaurant"
-  restaurants: RestaurantDto[] | null;
-  foods: FoodDto[] | null;
-  id: string;
-};
-```
+<!---->
+<!-- - GET `/foods/collections` -->
+<!---->
+<!--   > baraye mesal `daraye takhfif`, `behtarin ha` va... -->
+<!---->
+<!-- ```ts -->
+<!-- type FoodCollectionsDto = { -->
+<!--   label: string; // example: "دارای تخفیف" -->
+<!--   filter: string; // example: "?discount=true&tab=restaurant" -->
+<!--   restaurants: RestaurantDto[] | null; -->
+<!--   foods: FoodDto[] | null; -->
+<!--   id: string; -->
+<!-- }; -->
+<!-- ``` -->
 
 - GET `/foods/search/restaurant`
 
@@ -192,7 +179,8 @@ type FoodCollectionsDto = {
 type FoodSearchParams = {
   q: string; // search text
   category: string;
-};
+  collection?: string; // mathalan "takhfhif", "behtrain-ha", ...
+} & PaginationParams;
 
 type RestaurantSearchResultDto = RestaurantDto[];
 ```
@@ -203,7 +191,8 @@ type RestaurantSearchResultDto = RestaurantDto[];
 type FoodSearchParams = {
   q: string; // search text
   category: string;
-};
+  collection?: string; // mathalan "takhfhif", "behtrain-ha", ...
+} & PaginationParams;
 
 type FoodSearchResultDto = FoodDto[];
 ```
@@ -215,10 +204,8 @@ type RestaurantDto = {
   name: string;
   rating: number;
   image_url: string;
-  banner_url: string;
+  banner_url?: string;
   address: string;
-
-  foods: FoodDto[];
 };
 ```
 
@@ -231,7 +218,7 @@ type FoodDto = {
   name: string;
   rating: number;
   restaurant: RestaurantDto;
-  discount: DiscountDto;
   ingredients: string;
+  // discount: DiscountDto;
 };
 ```
