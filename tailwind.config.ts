@@ -11,6 +11,10 @@ const config: Config = {
         sans: ['var(--font-vazirmatn)'],
       },
 
+      dropShadow: {
+        'simple': '0 0 4px rgba(0, 0, 34, 0.20000000298023224)',
+      },
+
       colors: {
         primary: {
           5: 'rgba(255, 132, 4, 0.05000000074505806)',
