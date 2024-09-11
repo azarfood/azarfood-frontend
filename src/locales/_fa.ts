@@ -13,6 +13,12 @@ export default {
       password_empty: 'رمز عبور نمیتواند خالی باشد',
     },
   },
+  personal_info: {
+    fullname: 'نام و نام خانوادگی',
+    username: 'نام کاربری',
+    national_code: 'کد ملی',
+    change_password: 'تغییر رمز عبور',
+  },
   transaction_history: {
     date: 'تاریخ',
     time: 'ساعت',
