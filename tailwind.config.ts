@@ -12,7 +12,8 @@ const config: Config = {
       },
 
       dropShadow: {
-        'simple': '0 0 4px rgba(0, 0, 34, 0.20000000298023224)',
+        'simple': '0 0 3px rgba(0, 0, 34, 0.20000000298023224)',
+        'simple-01': '0 1px 2px rgba(0, 0, 34, 0.4000000059604645)',
       },
 
       colors: {
