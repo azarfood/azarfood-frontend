@@ -1,6 +1,6 @@
 'use client'
 
-import PersonalInfo from '@/components/personal-info-frame/personal-info-frame.component'
+import PersonalInfo from '@/components/user-panel/personal-info-frame.component'
 
 export default function UserPanel(){
 
