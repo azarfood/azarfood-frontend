@@ -18,12 +18,6 @@ export default {
     username: 'نام کاربری',
     national_code: 'کد ملی',
     change_password: 'تغییر رمز عبور',
-    button:{
-      transaction_history: 'تاریخچه‌ی تراکنشات',
-      order_history: 'تاریخچه‌ی سفارشات',
-      reservation_history: 'غذاهای رزرو شده',
-      support: 'پشتیبانی',
-    }
   },
   transaction_history: {
     date: 'تاریخ',
