@@ -26,7 +26,7 @@ export default function PersonalInfo(){
 
     return(
       <div className='bg-foreground-100 w-full rounded-lg border-2 border-primary-100
-                      drop-shadow-3xl text-center'>
+                      drop-shadow-3xl text-center text-xs text-secondary-100'>
 
         <MaleAvatar className='h-[123px] w-[123px] rounded-full mx-auto mt-8 drop-shadow-md'/>
         <p className='text-base mt-4'>دانشجو</p>
@@ -34,9 +34,9 @@ export default function PersonalInfo(){
         <hr className='border-primary-80 h-px mx-6 mt-8 rounded-xl'></hr>
 
         <div className='flex flex-row mx-5 mt-5'>
-          <User className='w-5 h-5 mt-1 text-secondary-100'/>
+          <User className='w-5 h-5 mt-1'/>
 
-          <div className='mr-2 text-xs text-right'>
+          <div className='mr-2 text-right'>
             <p>{t('fullname')}</p>
             <p>{data.result.first_name} {data.result.last_name}</p>
           </div>
@@ -44,25 +44,25 @@ export default function PersonalInfo(){
 
 
         <div className='flex flex-row mx-5 mt-4'>
-          <UserCircle className='w-5 h-5 mt-1 text-secondary-100'/>
+          <UserCircle className='w-5 h-5 mt-1 '/>
   
-          <div className='mr-2 text-xs text-right'>
+          <div className='mr-2 text-right'>
             <p>{t('username')}</p>
             <p>{data.result.student_id}</p>
           </div>
         </div>
 
 
-        <div className='flex flex-row mx-5 my-4 text-secondary-100'>
+        <div className='flex flex-row mx-5 my-4 '>
           <NationalCode className='w-5 h-5 mt-1'/>
     
-          <div className='mr-2 text-xs text-right'>
+          <div className='mr-2 text-right'>
             <p>{t('national_code')}</p>
             <p>{data.result.national_code}</p>
           </div>
         </div>
 
-        <button className='bg-foreground-100 w-full text-xs h-7 rounded-b-[6px] border-t-2 border-t-primary-100
+        <button className='bg-foreground-100 w-full h-7 rounded-b-[6px] border-t-2 border-t-primary-100
                              duration-150
                            active:bg-primary-100 active:text-foreground-100'>
           {t('change_password')}
