@@ -26,7 +26,7 @@ export default function PersonalInfo(){
 
     return(
       <div className='bg-foreground-100 w-full rounded-lg border-2 border-primary-100
-                      drop-shadow-3xl text-center text-xs text-secondary-100'>
+                      drop-shadow-simple text-center text-xs text-secondary-100 mb-3'>
 
         <MaleAvatar className='h-[123px] w-[123px] rounded-full mx-auto mt-8 drop-shadow-md'/>
         <p className='text-base mt-4'>دانشجو</p>
@@ -63,7 +63,7 @@ export default function PersonalInfo(){
         </div>
 
         <button className='bg-foreground-100 w-full h-7 rounded-b-[6px] border-t-2 border-t-primary-100
-                             duration-150
+                             duration-100
                            active:bg-primary-100 active:text-foreground-100'>
           {t('change_password')}
         </button>
