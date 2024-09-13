@@ -19,7 +19,10 @@ export default function PersonalInfo(){
       });
 
     if (isPending) {
-        return <></>
+        return <div className='bg-foreground-100 w-full rounded-lg border-2 border-primary-100
+                               drop-shadow-simple text-center text-xs text-secondary-100 mb-3
+                               h-[419.43px]'>
+               </div>
       }
     if (isError) {
         return <div>error</div>;
