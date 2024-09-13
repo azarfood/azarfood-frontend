@@ -24,9 +24,14 @@ export function useRipple() {
     setRippleInfos((prev) => prev.filter((ripple) => ripple.id !== id));
   }
   function onMouseDown(event: RippleMouseEvent) {
-    const { offsetX, offsetY } = event.nativeEvent;
+    const { clientX, clientY } = event;
+    const { x: parentX, y: parentY } =
+      event.currentTarget.getBoundingClientRect();
     const id = Date.now();
-    setRippleInfos((prev) => [...prev, { id, x: offsetX, y: offsetY }]);
+    setRippleInfos((prev) => [
+      ...prev,
+      { id, x: clientX - parentX, y: clientY - parentY },
+    ]);
   }
   const ripples = (
     <AnimatePresence>
