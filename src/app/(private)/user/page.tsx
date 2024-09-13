@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import Calculator from '@/assets/icons/user-panel/calculator.svg'
 import Calendar  from '@/assets/icons/user-panel/calendar.svg'
 import CalendarDays  from '@/assets/icons/user-panel/calendar-days.svg'
@@ -15,18 +17,27 @@ export default function UserPanel(){
         <div className="w-[310px] mt-12 mx-auto h-full">
             <PersonalInfo />
 
-            <Button icon={<Calculator className='size-5 mr-3 pointer-events-none'/>}
-                    context={t('button.transaction_history')}/>
+            <Link href='./user/transactions'>
+                <Button icon={<Calculator className='size-5 mr-3 pointer-events-none'/>}
+                        context={t('button.transaction_history')}/>
+            </Link>
 
-            <Button icon={<Calendar className='size-5 mr-3 pointer-events-none'/>}
-                    context={t('button.order_history')}/>
+            <Link href=''>
+                <Button icon={<Calendar className='size-5 mr-3 pointer-events-none'/>}
+                        context={t('button.order_history')}/>
+            </Link>
+            
+            <Link href=''>
+                <Button icon={<CalendarDays className='size-5 mr-3 pointer-events-none'/>}
+                        context={t('button.reservation_history')}/>
+            </Link>
+            
+            <Link href=''>
+                <Button context={t('button.support')}
+                        className='bg-success-100 pr-4'/>
+            </Link>
 
-            <Button icon={<CalendarDays className='size-5 mr-3 pointer-events-none'/>}
-                    context={t('button.reservation_history')}/>
-
-            <Button context={t('button.support')}
-                    className='bg-success-100 pr-4'
-            />
+            
         </div>
     )
 }
