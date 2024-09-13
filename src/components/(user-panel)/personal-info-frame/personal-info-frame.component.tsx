@@ -6,7 +6,7 @@ import NationalCode from '@/assets/icons/user-panel/credit-card.svg';
 import User from '@/assets/icons/user-panel/user.svg';
 import UserCircle from '@/assets/icons/user-panel/user-circle.svg';
 import MaleAvatar from '@/assets/images/avatars/male.svg';
-import Information from '@/components/user-panel/information/information.component';
+import Information from '@/components/(user-panel)/information/information.component';
 import { useScopedI18n } from '@/locales/client';
 import { UserService } from '@/services/user/user.service';
 
