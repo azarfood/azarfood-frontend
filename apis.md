@@ -65,10 +65,10 @@ type OrderHistoryDto = {
   status: 'delivered' | 'pending';
   meal: 'lunch' | 'dinner';
 
-  orders: {
+  orderProducts: {
     name: string;
     count: number;
-    price: string;
+    cost: string;
   }[];
 }[];
 ```
@@ -83,10 +83,10 @@ type OrderListDto = {
   status: 'pending';
   meal: 'lunch' | 'dinner';
 
-  orders: {
+  orderProducts: {
     name: string;
     count: number;
-    price: string;
+    cost: string;
   }[];
 }[];
 ```
@@ -124,7 +124,7 @@ type PlaceOrderDto = {
     order_date: string;
     meal: 'dinner' | 'lunch';
 
-    orders: {
+    orderProducts: {
       id: string;
       count: number;
     }[];
