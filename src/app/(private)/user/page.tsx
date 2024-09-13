@@ -12,22 +12,21 @@ export default function UserPanel(){
     const t = useScopedI18n("personal_info")
 
     return(
-        <div className="w-[310px] mt-12 mx-auto">
+        <div className="w-[310px] mt-12 mx-auto h-full">
             <PersonalInfo />
 
-            <Button icon={<Calculator className='size-5 mr-3'/>}
+            <Button icon={<Calculator className='size-5 mr-3 pointer-events-none'/>}
                     context={t('button.transaction_history')}/>
 
-            <Button icon={<Calendar className='size-5 mr-3'/>}
+            <Button icon={<Calendar className='size-5 mr-3 pointer-events-none'/>}
                     context={t('button.order_history')}/>
 
-            <Button icon={<CalendarDays className='size-5 mr-3'/>}
+            <Button icon={<CalendarDays className='size-5 mr-3 pointer-events-none'/>}
                     context={t('button.reservation_history')}/>
 
-            <button className='flex flex-row w-full bg-success-100 rounded-lg pr-4 my-4 h-10 drop-shadow-simple-01
-                               items-center text-foreground-100 text-[14px]'>
-                {t('button.support')}
-            </button>
+            <Button context={t('button.support')}
+                    className='bg-success-100 pr-4'
+            />
         </div>
     )
 }
