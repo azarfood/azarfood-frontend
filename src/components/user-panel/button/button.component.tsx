@@ -15,7 +15,7 @@ export default function Button({icon , context , className}: ButtonProps){
     const { onMouseDown, ripples } = useRipple();
 
     return(
-        <button className={cn('dark flex flex-row w-full bg-primary-100 rounded-lg my-4 h-10 drop-shadow-simple-01 items-center text-foreground-100 text-[14px] gap-2 overflow-hidden relative',
+        <button className={cn('dark flex flex-row w-full bg-primary-100 rounded-lg my-4 h-9 drop-shadow-simple-01 items-center text-foreground-100 text-[14px] gap-2 overflow-hidden relative',
                                className)}
                 onMouseDown={onMouseDown}>
 
