@@ -1,17 +1,21 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
 import SpinnerIcon from '@/assets/icons/spinner.svg';
 import NationalCode from '@/assets/icons/user-panel/credit-card.svg';
 import User from '@/assets/icons/user-panel/user.svg';
 import UserCircle from '@/assets/icons/user-panel/user-circle.svg';
 import MaleAvatar from '@/assets/images/avatars/male.svg';
+import ChangePassword from '@/components/(user-panel)/change-password/change-password.component';
 import Information from '@/components/(user-panel)/information/information.component';
 import { useScopedI18n } from '@/locales/client';
 import { UserService } from '@/services/user/user.service';
 
 export default function PersonalInfo() {
   const t = useScopedI18n('personal_info'); //we have only access to personal info, not other datas
+
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   const { isPending, isError, data } = useQuery({
     queryKey: ['/user/me'],
@@ -27,6 +31,7 @@ export default function PersonalInfo() {
       </div>
     );
   }
+
   if (isError) {
     return <div>error</div>;
   }
@@ -34,6 +39,7 @@ export default function PersonalInfo() {
   const name = data.result.first_name + data.result.last_name;
 
   return (
+    <>
     <div className='mb-3 w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 drop-shadow-simple'>
       <MaleAvatar className='mx-auto mt-8 h-[123px] w-[123px] rounded-full drop-shadow-md' />
 
@@ -59,9 +65,16 @@ export default function PersonalInfo() {
         value={data.result.national_code}
       />
 
-      <button className='h-7 w-full rounded-b-[6px] border-t-2 border-t-primary-100 bg-foreground-100 duration-100 active:bg-primary-100 active:text-foreground-100'>
+      <button
+        className='h-7 w-full rounded-b-[6px] border-t-2 border-t-primary-100 bg-foreground-100 duration-100 active:bg-primary-100 active:text-foreground-100'
+        onClick={() => setShowChangePassword(true)}
+      >
         {t('change_password')}
       </button>
     </div>
+    
+    <ChangePassword show={showChangePassword}
+                      onClose={() => setShowChangePassword(false)}/>
+    </>
   );
 }
