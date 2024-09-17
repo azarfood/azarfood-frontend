@@ -17,8 +17,8 @@ export default {
     login: 'ورود',
     support: 'پشتیبانی',
     errors: {
-      username_empty: 'نام کاربری نمیتواند خالی باشد',
-      password_empty: 'رمز عبور نمیتواند خالی باشد',
+      username_empty: 'نام کاربری نمی‌تونه خالی باشه',
+      password_empty: 'رمز عبور نمی‌تونه خالی باشه',
     },
   },
   personal_info: {
@@ -39,6 +39,12 @@ export default {
     old_password: 'رمز عبور قبلی',
     new_password: 'رمز عبور جدید',
     confirm_password: 'تکرار رمز عبور',
+    errors: {
+      password_empty: 'رمز عبور نمی‌تونه خالی باشه',
+      password_min: 'رمز عبور نمی‌تونه کمتر از 8 کاراکتر باشه',
+      password_max: 'رمز عبور نمی‌تونه بیشتر از 20 کاراکتر باشه',
+      confirmation: 'تکرار رمز عبور اشتباهه',
+    }, 
   },
   transaction_history: {
     date: 'تاریخ',
