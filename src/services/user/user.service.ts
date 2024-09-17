@@ -35,8 +35,13 @@ export class UserService {
     return response.data;
   }
 
-  public static async changePassword(dto: ChangePasswordDto): Promise<ChangePasswordResponseDto>{
-    const response = await HttpService.post<ChangePasswordResponseDto>('/login' , dto)
+  public static async changePassword(
+    dto: ChangePasswordDto,
+  ): Promise<ChangePasswordResponseDto> {
+    const response = await HttpService.post<ChangePasswordResponseDto>(
+      '/user/change-password',
+      dto,
+    );
     return response.data;
   }
 }
