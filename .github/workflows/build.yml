@@ -4,29 +4,31 @@ on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  cache-and-install:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Step 2: Set up Node.js with specific version
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.17.0'  # Specify the exact Node.js version
-          cache: 'pnpm'             # Enable caching for pnpm
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
 
-      # Step 5: Install dependencies
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.17.0
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Step 6: Build the project
       - name: Build project
-        run: pnpm run build  # Replace 'build' with your actual build command if different
+        run: pnpm run build
