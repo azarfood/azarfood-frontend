@@ -24,6 +24,11 @@ jobs:
       # Step 3: Enable Corepack
       - name: Enable Corepack
         run: corepack enable
+
+      # Step 4: Install pnpm using Corepack
+      - name: Install pnpm
+        run: corepack prepare pnpm --activate
+
       # Step 5: Install dependencies
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
