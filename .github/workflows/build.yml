@@ -14,23 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up pnpm
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest  # Specify the pnpm version you want to use
-
-      # Step 3: Set up Node.js
+      # Step 2: Set up Node.js with specific version
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.17.0'  # Specify the Node.js version you want to use
-          cache: 'pnpm'       # Enable caching for pnpm
+          node-version: '20.17.0'  # Specify the exact Node.js version
+          cache: 'pnpm'             # Enable caching for pnpm
 
-      # Step 4: Install dependencies
+      # Step 3: Enable Corepack
+      - name: Enable Corepack
+        run: corepack enable
+      # Step 5: Install dependencies
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Step 5: Build the project
+      # Step 6: Build the project
       - name: Build project
         run: pnpm run build  # Replace 'build' with your actual build command if different
