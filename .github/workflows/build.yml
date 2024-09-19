@@ -21,13 +21,7 @@ jobs:
           node-version: '20.17.0'  # Specify the exact Node.js version
           cache: 'pnpm'             # Enable caching for pnpm
 
-      # Step 3: Enable Corepack
-      - name: Enable Corepack
-        run: corepack enable
-
-      # Step 4: Install pnpm using Corepack
-      - name: Install pnpm
-        run: corepack prepare pnpm --activate
+      - uses: pnpm/action-setup@v4
 
       # Step 5: Install dependencies
       - name: Install dependencies
