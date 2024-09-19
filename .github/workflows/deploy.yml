@@ -1,4 +1,8 @@
-on: push
+on:
+  workflow_run:
+    workflows: [build]
+    types:
+      - completed
 jobs:
   git-sync:
     runs-on: ubuntu-latest
