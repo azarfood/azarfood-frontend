@@ -34,7 +34,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <AnimatePresence>
           {errorKey && (
             <motion.div
-              className='type-control-label text-error-100'
+              className='type-3r mx-1 text-error-100'
               variants={errorMessageVariants}
               animate='enter'
               initial='exit'

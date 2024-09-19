@@ -1,5 +1,13 @@
 export default {
   hello: 'سلام {first_name} {last_name}',
+  general: {
+    yes: 'آره',
+    no: 'نه',
+    delete: 'حذف',
+    delete_all: 'حذف همه',
+    confirm: 'تایید',
+    cancel: 'لغو',
+  },
   auth: {
     heading: 'سلام. خوش اومدی!',
     caption: 'برای استفاده از خدمات وبسایت، لطفا وارد شو.',
@@ -9,8 +17,8 @@ export default {
     login: 'ورود',
     support: 'پشتیبانی',
     errors: {
-      username_empty: 'نام کاربری نمیتواند خالی باشد',
-      password_empty: 'رمز عبور نمیتواند خالی باشد',
+      username_empty: 'نام کاربری نمی‌تونه خالی باشه',
+      password_empty: 'رمز عبور نمی‌تونه خالی باشه',
     },
   },
   personal_info: {
@@ -25,6 +33,18 @@ export default {
       reservation_history: 'غذاهای رزرو شده',
       support: 'پشتیبانی',
     },
+  },
+  reset_password: {
+    change_password: 'تغییر رمز عبور',
+    old_password: 'رمز عبور قبلی',
+    new_password: 'رمز عبور جدید',
+    confirm_password: 'تکرار رمز عبور',
+    errors: {
+      password_empty: 'رمز عبور نمی‌تونه خالی باشه',
+      password_min: 'رمز عبور نمی‌تونه کمتر از 8 کاراکتر باشه',
+      password_max: 'رمز عبور نمی‌تونه بیشتر از 20 کاراکتر باشه',
+      confirmation: 'تکرار رمز عبور اشتباهه',
+    }, 
   },
   transaction_history: {
     date: 'تاریخ',

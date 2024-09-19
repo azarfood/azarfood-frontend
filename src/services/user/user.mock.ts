@@ -2,6 +2,7 @@ import { httpMock } from '@/services/http/http.mock';
 import type { ErrorDto } from '@/types/dto/error.dto';
 import type { ResponseDto } from '@/types/dto/response.dto';
 
+import type { ChangePasswordResponseDto } from './dtos/change-password-response.dto';
 import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
@@ -32,6 +33,12 @@ const meResponse: MeResponseDto = {
     student_id: '4001802020',
     national_code: '1431772839',
   },
+};
+
+const changePasswordResponse: ChangePasswordResponseDto = {
+  success: true,
+  result: undefined,
+  message: 'رمز عبور با موفقیت تغییر پیدا کرد',
 };
 
 httpMock
@@ -75,6 +82,13 @@ const balanceResponse: ResponseDto<UserBalanceDto> = {
 httpMock
   .onGet('/user/balance', privateRouteOptions)
   .reply(200, balanceResponse);
+
+httpMock
+  .onPost('/user/change-password', {
+    old_password: meResponse.result.national_code,
+    new_password: '11111111'
+  })
+  .reply(200, changePasswordResponse);
 
 httpMock
   .onGet('/*', {

@@ -71,6 +71,84 @@ const config: Config = {
   plugins: [
     plugin(({ addComponents, theme }) => {
       addComponents({
+        '.type-2r': {
+          fontWeight: '400',
+          fontSize: '0.5rem', //8px
+          lineHeight: '0.625rem', //10px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-2-5r': {
+          fontWeight: '400',
+          fontSize: '0.625rem', //10px
+          lineHeight: '0.75rem', //12px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-3r': {
+          fontWeight: '400',
+          fontSize: '0.75rem', //12px
+          lineHeight: '1.25rem', //20px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-3-5r': {
+          fontWeight: '400',
+          fontSize: '0.875rem', //14px
+          lineHeight: '1.0625rem', //17px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-4r': {
+          fontWeight: '400',
+          fontSize: '1rem', //16px
+          lineHeight: '1.57rem', //25px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-5r': {
+          fontWeight: '400',
+          fontSize: '1.25rem', //20px
+          lineHeight: '1.9375rem', //31px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-6r': {
+          fontWeight: '400',
+          fontSize: '1.5rem', //24px
+          lineHeight: '2.375rem', //38px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-3m': {
+          fontWeight: '500',
+          fontSize: '0.75rem', //12px
+          lineHeight: '1.25rem', //20px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-3-5m': {
+          fontWeight: '500',
+          fontSize: '0.875rem', //14px
+          lineHeight: '1.0625rem', //17px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-4m': {
+          fontWeight: '500',
+          fontSize: '1rem', //16px
+          lineHeight: '1.57rem', //25px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-3sb': {
+          fontWeight: '600',
+          fontSize: '0.75rem', //12px
+          lineHeight: '1.25rem', //20px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-sb': {
+          fontWeight: '600',
+          fontSize: '1rem', //16px
+          lineHeight: '1.57rem', //25px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
+        '.type-4-5b': {
+          fontWeight: '700',
+          fontSize: '1.125rem', //18px
+          lineHeight: '1.75rem', //28px
+          fontFamily: theme('fontFamily.vazirmatn'),
+        },
         '.type-h1': {
           fontWeight: '500',
           fontSize: '1.5rem',
