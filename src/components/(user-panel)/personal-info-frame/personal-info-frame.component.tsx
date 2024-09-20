@@ -24,7 +24,7 @@ export default function PersonalInfo() {
 
   if (isPending) {
     return (
-      <div className='mb-3 h-[419.43px] w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 drop-shadow-simple'>
+      <div className='mb-3 h-[419.43px] w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 shadow-simple'>
         <div className='flex h-full w-full items-center justify-center'>
           <SpinnerIcon className='mx-auto animate-spin fill-primary-20' />
         </div>
@@ -40,7 +40,7 @@ export default function PersonalInfo() {
 
   return (
     <>
-    <div className='mb-3 w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 drop-shadow-simple'>
+    <div className='mb-3 w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 shadow-simple'>
       <MaleAvatar className='mx-auto mt-8 h-[123px] w-[123px] rounded-full drop-shadow-md' />
 
       <p className='mt-4 text-base'>{t('student')}</p>

@@ -16,7 +16,7 @@ export default function Button({ icon, context, className }: ButtonProps) {
   return (
     <button
       className={cn(
-        'dark relative my-4 flex h-9 w-full flex-row items-center gap-2 overflow-hidden rounded-lg bg-primary-100 text-[14px] text-foreground-100 drop-shadow-simple-01',
+        'dark relative my-4 flex h-9 w-full flex-row items-center gap-2 overflow-hidden rounded-lg bg-primary-100 text-[14px] text-foreground-100 shadow-simple-01',
         className,
       )}
       onMouseDown={onMouseDown}
