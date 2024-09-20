@@ -9,7 +9,7 @@ import type { OrderHistoryResponseDto } from './dtos/order-history-response.dto'
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
 import type { UserBalanceDto } from './dtos/user-balance.dto';
 import { orderHistoryMock } from './order-history.mock';
-import { orderListMrck } from './order-list.mock';
+import { orderListMock } from './order-list.mock';
 import { transactionMock } from './transaction.mock';
 
 const loginResponse: LoginResponseDto = {
