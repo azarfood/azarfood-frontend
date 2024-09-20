@@ -11,6 +11,7 @@ import ReactQueryProvider from './react-query-provider/react-query-provider';
 
 dayjs.extend(jalaliday).calendar('jalali');
 dayjs.extend(minMax);
+dayjs.locale('fa');
 
 export function Providers({ children }: PropsWithChildren) {
   return (

@@ -16,28 +16,28 @@ export default function UserPanel() {
     <div className='mx-auto mt-12 h-full w-[310px]'>
       <PersonalInfo />
 
-      <Link href='./user/transactions'>
+      <Link href='/user/transactions'>
         <Button
           icon={<Calculator className='pointer-events-none mr-3 size-5' />}
           context={t('button.transaction_history')}
         />
       </Link>
 
-      <Link href=''>
+      <Link href='/user/order-history'>
         <Button
           icon={<Calendar className='pointer-events-none mr-3 size-5' />}
           context={t('button.order_history')}
         />
       </Link>
 
-      <Link href=''>
+      <Link href='/user/reserved-food'>
         <Button
           icon={<CalendarDays className='pointer-events-none mr-3 size-5' />}
           context={t('button.reservation_history')}
         />
       </Link>
 
-      <Link href=''>
+      <Link href='/support'>
         <Button context={t('button.support')} className='bg-success-100 pr-4' />
       </Link>
     </div>

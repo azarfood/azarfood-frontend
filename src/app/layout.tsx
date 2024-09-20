@@ -1,12 +1,19 @@
 import '@/configs/globals.css';
 
+import dayjs from 'dayjs';
+import minMax from 'dayjs/plugin/minMax';
 import Locale from 'intl-locale-textinfo-polyfill';
+import jalaliday from 'jalaliday';
 import type { Metadata } from 'next';
 import { Montserrat, Vazirmatn } from 'next/font/google';
 
 import { I18nProviderClient } from '@/locales/client';
 import { Providers } from '@/stores/providers/providers';
 import { cn } from '@/utils/cn';
+
+dayjs.extend(jalaliday).calendar('jalali');
+dayjs.extend(minMax);
+dayjs.locale('fa');
 
 const montserrat = Montserrat({
   subsets: ['latin'],

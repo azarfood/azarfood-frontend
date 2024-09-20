@@ -5,8 +5,11 @@ import type { ResponseDto } from '@/types/dto/response.dto';
 import type { ChangePasswordResponseDto } from './dtos/change-password-response.dto';
 import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
+import type { OrderHistoryResponseDto } from './dtos/order-history-response.dto';
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
 import type { UserBalanceDto } from './dtos/user-balance.dto';
+import { orderHistoryMock } from './order-history.mock';
+import { orderListMrck } from './order-list.mock';
 import { transactionMock } from './transaction.mock';
 
 const loginResponse: LoginResponseDto = {
@@ -39,6 +42,15 @@ const changePasswordResponse: ChangePasswordResponseDto = {
   success: true,
   result: undefined,
   message: 'رمز عبور با موفقیت تغییر پیدا کرد',
+};
+
+const orderHistoryResponse: OrderHistoryResponseDto = {
+  success: true,
+  result: orderHistoryMock,
+};
+const orderListResponse: OrderHistoryResponseDto = {
+  success: true,
+  result: orderListMock,
 };
 
 httpMock
@@ -86,9 +98,17 @@ httpMock
 httpMock
   .onPost('/user/change-password', {
     old_password: meResponse.result.national_code,
-    new_password: '11111111'
+    new_password: '11111111',
   })
   .reply(200, changePasswordResponse);
+
+httpMock
+  .onGet('/user/order/history', privateRouteOptions)
+  .reply(200, orderHistoryResponse);
+
+httpMock
+  .onGet('/user/order/list', privateRouteOptions)
+  .reply(200, orderListResponse);
 
 httpMock
   .onGet('/*', {

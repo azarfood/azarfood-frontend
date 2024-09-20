@@ -44,7 +44,7 @@ export default {
       password_min: 'رمز عبور نمی‌تونه کمتر از 8 کاراکتر باشه',
       password_max: 'رمز عبور نمی‌تونه بیشتر از 20 کاراکتر باشه',
       confirmation: 'تکرار رمز عبور اشتباهه',
-    }, 
+    },
   },
   transaction_history: {
     date: 'تاریخ',
@@ -60,5 +60,17 @@ export default {
       this_week: 'این هفته',
       specific_date: 'بازه‌ی خاص',
     },
+  },
+  order_history: {
+    order_code: 'کد فیش',
+    order_date: 'تاریخ رزرو',
+    day: 'روز',
+    price: 'مبلغ',
+    total_sum: 'جمع کل',
+    total_price: 'قابل پرداخت  ',
+    currency_toman: 'تومان',
+    heading_order_history: 'غذاهایی که تا امروز رزرو کرده بودی',
+    heading_reserverd_food: 'غذاهایی که رزرو کردی',
+    cancel_reservation: 'لغو رزرو',
   },
 } as const;
