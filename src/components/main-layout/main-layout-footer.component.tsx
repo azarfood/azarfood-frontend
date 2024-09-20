@@ -31,7 +31,7 @@ export function MainLayoutFooter() {
       {footerRoutes.map((route) => (
         <Link href={route.href} key={route.href}>
           <Button
-            className='shadown-none dark h-10 min-h-0 w-10 rounded-full bg-transparent p-0 data-[active=true]:text-primary-100'
+            className='shadown-none dark h-10 min-h-0 w-10 rounded-full bg-transparent p-0 transition data-[active=true]:text-primary-100'
             data-active={
               route.href === '/'
                 ? isOnRoot
