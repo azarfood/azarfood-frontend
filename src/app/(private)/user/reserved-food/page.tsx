@@ -1,5 +1,5 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
@@ -9,16 +9,13 @@ import { useScopedI18n } from '@/locales/client';
 import { UserService } from '@/services/user/user.service';
 
 export default function ReservedFoodPage() {
-  const { isPending, isError, data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ['/user/order/list'],
     queryFn: UserService.getOrderList,
   });
   const t = useScopedI18n('order_history');
   const router = useRouter();
 
-  if (isPending || isError) {
-    return <div>loading...</div>;
-  }
   return (
     <main>
       <div className='type-sb mt-4 flex items-center rounded-lg bg-primary-100 text-foreground-100'>
