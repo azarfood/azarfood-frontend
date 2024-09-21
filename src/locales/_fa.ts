@@ -61,6 +61,7 @@ export default {
       specific_date: 'بازه‌ی خاص',
     },
   },
+<<<<<<< HEAD
   food_categories: {
     pizza: 'پیتزا',
     burger: 'برگر',
@@ -72,4 +73,18 @@ export default {
   searchbar:{
     what_you_want: 'دلت چی می‌خواد؟'
   }
+=======
+  order_history: {
+    order_code: 'کد فیش',
+    order_date: 'تاریخ رزرو',
+    day: 'روز',
+    price: 'مبلغ',
+    total_sum: 'جمع کل',
+    total_price: 'قابل پرداخت  ',
+    currency_toman: 'تومان',
+    heading_order_history: 'غذاهایی که تا امروز رزرو کرده بودی',
+    heading_reserverd_food: 'غذاهایی که رزرو کردی',
+    cancel_reservation: 'لغو رزرو',
+  },
+>>>>>>> 8d14c6a4751064fb5475e7ba5a0017b748764b37
 } as const;

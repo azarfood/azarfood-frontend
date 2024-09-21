@@ -7,6 +7,7 @@ import type { ChangePasswordDto } from './dtos/change-password.dto';
 import type { ChangePasswordResponseDto } from './dtos/change-password-response.dto';
 import type { LoginResponseDto } from './dtos/login-response-dto';
 import type { MeResponseDto } from './dtos/me-response-dto';
+import type { OrderHistoryResponseDto } from './dtos/order-history-response.dto';
 import type { TransactionHistoryResponseDto } from './dtos/transaction-history-response.dto';
 import type { UserBalanceDto } from './dtos/user-balance.dto';
 import type { UserLoginDto } from './dtos/user-login.dto';
@@ -42,6 +43,18 @@ export class UserService {
       '/user/change-password',
       dto,
     );
+    return response.data;
+  }
+
+  public static async getOrderHistory(): Promise<OrderHistoryResponseDto> {
+    const response = await HttpService.get<OrderHistoryResponseDto>(
+      '/user/order/history',
+    );
+    return response.data;
+  }
+  public static async getOrderList(): Promise<OrderHistoryResponseDto> {
+    const response =
+      await HttpService.get<OrderHistoryResponseDto>('/user/order/list');
     return response.data;
   }
 }

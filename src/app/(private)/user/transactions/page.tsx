@@ -1,13 +1,12 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import type { Dispatch, SetStateAction } from 'react';
 import { useMemo, useState } from 'react';
 
 import CalendarIcon from '@/assets/icons/calendar.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
-import SpinnerIcon from '@/assets/icons/spinner.svg';
 import { Button } from '@/components/button/button.component';
 import { ButtonGroup } from '@/components/button-group/button-group.component';
 import { DateRangePicker } from '@/components/date-range-picker/date-range-picker.component';
@@ -126,20 +125,11 @@ function TransactionHistoryFilters({
 
 export default function TransactionsPage() {
   const t = useScopedI18n('transaction_history');
-  const { data, isPending, isError } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ['/user/transaction-history'],
     queryFn: UserService.getTransactionHistory,
   });
   const [filters, setFilters] = useState<TransactionFilters>({});
-
-  if (isPending || isError) {
-    return (
-      <div className='flex h-full w-full items-center justify-center'>
-        <SpinnerIcon className='mx-auto animate-spin fill-secondary-100' />
-      </div>
-    );
-  }
-
   return (
     <>
       <UserWallet />

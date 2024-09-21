@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
@@ -12,7 +12,7 @@ import { priceFormatter } from '@/utils/price-formatter';
 import { Button } from '../button/button.component';
 
 export function UserWallet() {
-  const { isPending, isError, data } = useQuery({
+  const { data } = useSuspenseQuery({
     queryKey: ['/user/balance'],
     queryFn: UserService.getBalance,
   });
@@ -34,13 +34,7 @@ export function UserWallet() {
         </div>
 
         <div className='mr-auto mt-auto'>
-          {isPending && <div className='animate-pulse'>-</div>}
-          {isError && <div className='text-error-100'>error!</div>}
-          {!isPending && !isError && (
-            <>
-              {priceFormatter.format(data.result.balance)} {t('currency_toman')}
-            </>
-          )}
+          {priceFormatter.format(data.result.balance)} {t('currency_toman')}
         </div>
       </div>
     </div>
