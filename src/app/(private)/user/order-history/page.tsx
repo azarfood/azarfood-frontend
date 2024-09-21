@@ -27,7 +27,7 @@ export default function OrderHistoryPage() {
           <ArrowLeftIcon />
         </Button>
       </div>
-      <FoodTable className='mt-5' orders={data.result} />
+      <FoodTable className='mb-5 mt-5' orders={data.result} />
     </main>
   );
 }
