@@ -37,7 +37,7 @@ export default function LoginPage() {
           password: form.password,
         });
         setToken(response.result.access_token);
-        router.push('/home');
+        router.push('/');
       } catch (err: unknown) {
         const error = errorSchema.safeParse(
           (err as AxiosError)?.response?.data,
