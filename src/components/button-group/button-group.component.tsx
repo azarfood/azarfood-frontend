@@ -30,6 +30,7 @@ export function ButtonGroup({ className, items }: ButtonGroupProps) {
               <motion.div
                 className='absolute inset-0 rounded bg-secondary-100'
                 layoutId='filter-highlight'
+                initial={false}
               ></motion.div>
             )}
             <div className='relative inset-0 z-10'>{children}</div>
