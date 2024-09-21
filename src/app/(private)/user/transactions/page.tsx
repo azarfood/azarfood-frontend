@@ -7,7 +7,6 @@ import { useMemo, useState } from 'react';
 
 import CalendarIcon from '@/assets/icons/calendar.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
-import SpinnerIcon from '@/assets/icons/spinner.svg';
 import { Button } from '@/components/button/button.component';
 import { ButtonGroup } from '@/components/button-group/button-group.component';
 import { DateRangePicker } from '@/components/date-range-picker/date-range-picker.component';
