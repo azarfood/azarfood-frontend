@@ -4,6 +4,7 @@
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 2px;
 }
 
 /* Track */
@@ -11,9 +12,14 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: transparent;
+  background: theme(colors.secondary.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: theme(colors.secondary.100);
 }
+
+.swiper-pagination-bullet-active{
+  --swiper-theme-color: theme(colors.primary.100);
+}
+
