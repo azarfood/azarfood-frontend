@@ -9,7 +9,7 @@ export enum FoodCategory {
     Pizza = 'pizza',
     Burger = 'burger',
     Iranian = 'iranian',
-    FriedFood = 'fried-food',
+    FriedFood = 'fried_food',
     Sandwich = 'sandwich',
     Salad = 'salad'
 }
