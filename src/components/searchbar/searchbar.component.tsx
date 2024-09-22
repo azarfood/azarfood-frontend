@@ -10,11 +10,11 @@ export default function Searchbar() {
   return (
     <div
       className={cn(
-        'relative mt-6 flex flex-row items-center overflow-hidden rounded-lg shadow-sm transition hover:shadow-simple-02',
+        'relative bg-transparent mt-6 flex flex-row items-center overflow-hidden rounded-lg shadow-sm transition hover:shadow-simple-02',
       )}
     >
       <input
-        className='peer type-3-5r h-10 w-full pl-11 rounded-lg border-[1.5px] border-primary-40 pr-3 text-secondary-80 outline-none transition focus:border-primary-100'
+        className='peer bg-transparent type-3-5r h-10 w-full pl-11 rounded-lg border-[1.5px] border-primary-40 pr-3 text-secondary-80 outline-none transition focus:border-primary-100'
         type='text'
         placeholder={t('what_you_want')}
       ></input>
