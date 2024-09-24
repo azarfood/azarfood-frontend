@@ -13,7 +13,7 @@ export default function Slider() {
       <Swiper
         pagination={true}
         modules={[Pagination]}
-        className='rounded-lg border border-secondary-5 bg-transparent shadow-lg'
+        className='mb-1 rounded-lg border border-secondary-5 bg-transparent shadow-lg'
       >
         <SwiperSlide>
           <Image src={Ad1} alt='ads' />
