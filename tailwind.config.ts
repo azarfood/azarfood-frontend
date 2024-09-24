@@ -138,7 +138,7 @@ const config: Config = {
           lineHeight: '1.25rem', //20px
           fontFamily: theme('fontFamily.vazirmatn'),
         },
-        '.type-sb': {
+        '.type-4sb': {
           fontWeight: '600',
           fontSize: '1rem', //16px
           lineHeight: '1.57rem', //25px
