@@ -3,10 +3,12 @@ export default {
   general: {
     yes: 'آره',
     no: 'نه',
+    all: 'همه',
     delete: 'حذف',
     delete_all: 'حذف همه',
     confirm: 'تایید',
     cancel: 'لغو',
+    discount: 'تخفیف',
   },
   auth: {
     heading: 'سلام. خوش اومدی!',
@@ -69,8 +71,8 @@ export default {
     sandwich: 'ساندویچ',
     salad: 'سالاد',
   },
-  searchbar:{
-    what_you_want: 'دلت چی می‌خواد؟'
+  searchbar: {
+    what_you_want: 'دلت چی می‌خواد؟',
   },
   order_history: {
     order_code: 'کد فیش',
