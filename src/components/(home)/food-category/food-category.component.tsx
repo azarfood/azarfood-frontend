@@ -17,10 +17,10 @@ export default function FoodCategory({ image, category }: FoodCategoryProps) {
 
   return (
     <button
-      className='peer w-[60px] text-center'
+      className='group w-[60px] text-center'
       onClick={() => handleClick(category)}
     >
-      <div className='flex size-[60px] items-center justify-center rounded-full bg-primary-20 p-3 shadow-simple-01 transition hover:shadow-md active:bg-primary-60 active:shadow-simple-01 peer-active:bg-primary-100'>
+      <div className='flex size-[60px] items-center justify-center rounded-full bg-primary-20 p-3 shadow-simple-01 transition hover:shadow-md active:bg-primary-60 active:shadow-simple-01 group-active:bg-primary-60'>
         <Image
           src={image}
           alt='i'
