@@ -14,7 +14,7 @@ HttpService.interceptors.request.use(
   function (config) {
     const token = StorageService.user_token.get();
     if (token) {
-      config.headers.Authorization = token;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },

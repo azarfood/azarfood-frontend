@@ -4,5 +4,5 @@ import type { UserDto } from './user.dto';
 
 export type LoginResponseDto = ResponseDto<{
   user: UserDto;
-  access_token: string;
+  token: string;
 }>;

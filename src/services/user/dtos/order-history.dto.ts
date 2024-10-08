@@ -2,7 +2,7 @@ export interface OrderHistoryDto {
   id: string;
   date: string;
   total_cost: string;
-  status: 'delivered' | 'canceled' | 'pending';
+  status: 'delivered' | 'canceled' | 'reserved';
   meal: 'lunch' | 'dinner';
 
   orderProducts: {

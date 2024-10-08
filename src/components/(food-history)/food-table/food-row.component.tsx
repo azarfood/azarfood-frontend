@@ -63,7 +63,7 @@ export interface FoodRowProps extends PropsWithChildren {
 
 // TODO: implement reserve cancelation
 export function FoodRow({ order, isOpen, toggleIsOpen }: FoodRowProps) {
-  const canCancelReserve = order.status === 'pending'; // we should also check the time range
+  const canCancelReserve = order.status === 'reserved'; // we should also check the time range
   const t = useScopedI18n('order_history');
 
   const date = dayjs(order.date);
@@ -78,7 +78,7 @@ export function FoodRow({ order, isOpen, toggleIsOpen }: FoodRowProps) {
     <>
       <motion.div
         data-status={order.status}
-        className='type-3r relative min-h-10 overflow-hidden rounded-lg border border-solid border-transparent bg-success-5 transition data-[active=true]:border-success-100 data-[status=canceled]:data-[active=true]:border-error-100 data-[status=pending]:data-[active=true]:border-transparent data-[status=canceled]:bg-error-5 data-[status=pending]:bg-secondary-5'
+        className='type-3r relative min-h-10 overflow-hidden rounded-lg border border-solid border-transparent bg-success-5 transition data-[active=true]:border-success-100 data-[status=canceled]:data-[active=true]:border-error-100 data-[status=reserved]:data-[active=true]:border-transparent data-[status=canceled]:bg-error-5 data-[status=reserved]:bg-secondary-5'
         data-active={isOpen}
       >
         <motion.div

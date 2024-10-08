@@ -19,10 +19,10 @@ const loginResponse: LoginResponseDto = {
       id: '1',
       first_name: 'رضا',
       last_name: 'رشیدی',
-      student_id: '4001802020',
+      student_code: '4001802020',
       national_code: '1431772839',
     },
-    access_token:
+    token:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Itix2LbYpyDYsdi024zYr9uMIiwiaWF0IjoxNTE2MjM5MDIyfQ._9tiJUXI5UCwIEfOfIK3axW5ku826S94cLjGEdrve04',
   },
 };
@@ -33,7 +33,7 @@ const meResponse: MeResponseDto = {
     id: '1',
     first_name: 'رضا',
     last_name: 'رشیدی',
-    student_id: '4001802020',
+    student_code: '4001802020',
     national_code: '1431772839',
   },
 };
@@ -55,7 +55,7 @@ const orderListResponse: OrderHistoryResponseDto = {
 
 httpMock
   .onPost('/login', {
-    username: loginResponse.result.user.student_id,
+    username: loginResponse.result.user.student_code,
     password: loginResponse.result.user.national_code,
   })
   .reply(200, loginResponse);
@@ -68,7 +68,7 @@ httpMock.onPost('/login').reply(400, {
 const privateRouteOptions = {
   headers: {
     asymmetricMatch: (headers: Record<string, string>) => {
-      return headers.Authorization === loginResponse.result.access_token;
+      return headers.Authorization === loginResponse.result.token;
     },
   },
 };
@@ -114,7 +114,7 @@ httpMock
   .onGet('/*', {
     headers: {
       asymmetricMatch: (headers: Record<string, string>) => {
-        return headers.Authorization !== loginResponse.result.access_token;
+        return headers.Authorization !== loginResponse.result.token;
       },
     },
   })
