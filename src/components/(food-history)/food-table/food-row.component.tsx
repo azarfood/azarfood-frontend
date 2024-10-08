@@ -66,7 +66,7 @@ export function FoodRow({ order, isOpen, toggleIsOpen }: FoodRowProps) {
   const canCancelReserve = order.status === 'reserved'; // we should also check the time range
   const t = useScopedI18n('order_history');
 
-  const date = dayjs(order.date);
+  const date = dayjs(+order.date * 1000);
   const values = [
     { value: order.id },
     { value: date.format('YYYY/MM/DD') },

@@ -20,10 +20,7 @@ interface TransactionRowProps {
   transaction: Transaction;
 }
 function TransactionRow({ transaction }: TransactionRowProps) {
-  const oldBalance =
-    +transaction.balance +
-    +transaction.value * (transaction.type === 'credit' ? -1 : 1);
-  const date = dayjs(transaction.date);
+  const date = dayjs(+transaction.date * 1000);
   return (
     <tr
       key={transaction.id}
@@ -31,14 +28,12 @@ function TransactionRow({ transaction }: TransactionRowProps) {
     >
       <td>{date.format('YYYY/MM/DD')}</td>
       <td>{date.format('HH:mm')}</td>
-      <td>{priceFormatter.format(oldBalance)}</td>
       <td
         className='text-success-100 data-[type=debit]:text-error-100'
         data-type={transaction.type}
       >
-        {priceFormatter.format(+transaction.value)}
+        {priceFormatter.format(+transaction.amount)}
       </td>
-      <td>{priceFormatter.format(+transaction.balance)}</td>
     </tr>
   );
 }
@@ -151,9 +146,7 @@ export default function TransactionsPage() {
             <tr className='border-b-secondary-10 h-10'>
               <td>{t('date')}</td>
               <td>{t('time')}</td>
-              <td>{t('balance')}</td>
               <td>{t('price')}</td>
-              <td>{t('remaining')}</td>
             </tr>
           </thead>
           <tbody>
