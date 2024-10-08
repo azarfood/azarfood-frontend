@@ -36,7 +36,7 @@ export default function LoginPage() {
           username: form.username,
           password: form.password,
         });
-        setToken(response.result.access_token);
+        setToken(response.result.token);
         router.push('/');
       } catch (err: unknown) {
         const error = errorSchema.safeParse(

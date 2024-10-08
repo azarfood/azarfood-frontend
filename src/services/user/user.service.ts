@@ -1,4 +1,4 @@
-import './user.mock';
+// import './user.mock';
 
 import type { ResponseDto } from '@/types/dto/response.dto';
 
@@ -14,7 +14,10 @@ import type { UserLoginDto } from './dtos/user-login.dto';
 
 export class UserService {
   public static async login(dto: UserLoginDto): Promise<LoginResponseDto> {
-    const response = await HttpService.post<LoginResponseDto>('/login', dto);
+    const response = await HttpService.post<LoginResponseDto>(
+      '/auth/login',
+      dto,
+    );
     return response.data;
   }
 
@@ -24,23 +27,25 @@ export class UserService {
   }
 
   public static async getTransactionHistory(): Promise<TransactionHistoryResponseDto> {
-    const response = await HttpService.get<TransactionHistoryResponseDto>(
-      '/user/transaction-history',
-    );
+    const response =
+      await HttpService.get<TransactionHistoryResponseDto>(
+        '/user/transactions',
+      );
     return response.data;
   }
 
   public static async getBalance(): Promise<ResponseDto<UserBalanceDto>> {
-    const response =
-      await HttpService.get<ResponseDto<UserBalanceDto>>('/user/balance');
-    return response.data;
+    // const response =
+    //   await HttpService.get<ResponseDto<UserBalanceDto>>('/user/balance');
+    // return response.data;
+    return { result: { balance: 1200 }, success: true };
   }
 
   public static async changePassword(
     dto: ChangePasswordDto,
   ): Promise<ChangePasswordResponseDto> {
     const response = await HttpService.post<ChangePasswordResponseDto>(
-      '/user/change-password',
+      '/auth/change-password',
       dto,
     );
     return response.data;

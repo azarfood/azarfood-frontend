@@ -5,7 +5,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '1',
     date: '2024-09-20',
     total_cost: '185000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'چلو کباب کوبیده', count: 2, cost: '120000' },
@@ -17,7 +17,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '2',
     date: '2024-09-19',
     total_cost: '210000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'قرمه سبزی', count: 3, cost: '150000' },
@@ -29,7 +29,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '3',
     date: '2024-09-18',
     total_cost: '165000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'جوجه کباب', count: 2, cost: '130000' },
@@ -40,7 +40,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '4',
     date: '2024-09-17',
     total_cost: '195000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'فسنجان', count: 2, cost: '140000' },
@@ -52,7 +52,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '5',
     date: '2024-09-16',
     total_cost: '220000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'باقالی پلو با گوشت', count: 2, cost: '180000' },
@@ -63,7 +63,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '6',
     date: '2024-09-15',
     total_cost: '175000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'کشک بادمجان', count: 2, cost: '110000' },
@@ -75,7 +75,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '7',
     date: '2024-09-14',
     total_cost: '230000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'زرشک پلو با مرغ', count: 3, cost: '180000' },
@@ -86,7 +86,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '8',
     date: '2024-09-13',
     total_cost: '200000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'میرزا قاسمی', count: 2, cost: '100000' },
@@ -98,7 +98,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '9',
     date: '2024-09-12',
     total_cost: '190000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'خورشت قیمه', count: 2, cost: '130000' },
@@ -110,7 +110,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '10',
     date: '2024-09-11',
     total_cost: '240000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'ته چین مرغ', count: 2, cost: '160000' },
@@ -122,7 +122,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '11',
     date: '2024-09-10',
     total_cost: '205000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'کباب برگ', count: 2, cost: '160000' },
@@ -134,7 +134,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '12',
     date: '2024-09-09',
     total_cost: '180000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'عدس پلو', count: 2, cost: '100000' },
@@ -146,7 +146,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '13',
     date: '2024-09-08',
     total_cost: '215000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'چلو خورشت سبزی', count: 2, cost: '140000' },
@@ -158,7 +158,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '14',
     date: '2024-09-07',
     total_cost: '195000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'کوفته تبریزی', count: 2, cost: '130000' },
@@ -170,7 +170,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '15',
     date: '2024-09-06',
     total_cost: '225000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'چلو کباب بختیاری', count: 2, cost: '180000' },
@@ -182,7 +182,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '16',
     date: '2024-09-05',
     total_cost: '170000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'آش رشته', count: 2, cost: '100000' },
@@ -193,7 +193,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '17',
     date: '2024-09-04',
     total_cost: '235000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'چلو ماهی', count: 2, cost: '180000' },
@@ -204,7 +204,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '18',
     date: '2024-09-03',
     total_cost: '200000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'دلمه برگ مو', count: 2, cost: '140000' },
@@ -216,7 +216,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '19',
     date: '2024-09-02',
     total_cost: '210000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'lunch',
     orderProducts: [
       { name: 'لوبیا پلو', count: 2, cost: '120000' },
@@ -228,7 +228,7 @@ export const orderListMock: OrderHistoryDto[] = [
     id: '20',
     date: '2024-09-01',
     total_cost: '245000',
-    status: 'pending',
+    status: 'reserved',
     meal: 'dinner',
     orderProducts: [
       { name: 'شیشلیک', count: 2, cost: '200000' },
