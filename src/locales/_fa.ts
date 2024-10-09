@@ -73,4 +73,8 @@ export default {
     heading_reserverd_food: 'غذاهایی که رزرو کردی',
     cancel_reservation: 'لغو رزرو',
   },
+  support:{
+    title:'پشتیبانی',
+    text : 'برای هر مشکلی میتونی از راه های زیر با ما ارتباط برقرار کنی :)'
+  }
 } as const;
