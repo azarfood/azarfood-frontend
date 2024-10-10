@@ -1,7 +1,7 @@
 'use client';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import AddIcon from '@/assets/icons/add.svg';
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
