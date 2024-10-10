@@ -73,4 +73,12 @@ export default {
     heading_reserverd_food: 'غذاهایی که رزرو کردی',
     cancel_reservation: 'لغو رزرو',
   },
+  food_detail: {
+    food_detail: 'جزئیات غذا',
+    add_to_cart: 'افزودن به سبد خرید',
+    price: 'قیمت :',
+    unit_toman: 'تومان',
+    ingredients: 'محتویات',
+    discount: 'تخفیف',
+  },
 } as const;
