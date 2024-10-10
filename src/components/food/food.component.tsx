@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import Plus from '@/assets/icons/plus.svg';
-import Salad from '@/assets/images/food-categories/salad.png';
 import { Button } from '@/components/button/button.component';
 import Discount from '@/components/food/discount/discount.component';
 import Rate from '@/components/food/rate/rate.component';
