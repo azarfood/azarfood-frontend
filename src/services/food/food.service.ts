@@ -15,7 +15,7 @@ export class FoodService {
     });
 
     const response = await HttpService.get<FoodSearchResponseDto>(
-      '/foods/search/food?' + temp.toString(),
+      '/food?' + temp.toString(),
     );
     return response.data;
   }
@@ -28,14 +28,14 @@ export class FoodService {
       temp.set(key, value);
     });
     const response = await HttpService.get<RestaurantSearchResponseDto>(
-      '/foods/search/restaurant' + temp.toString(),
+      '/restaurant?' + temp.toString(),
     );
     return response.data;
   }
 
   public static async getFood(id: string): Promise<FoodResponseDto> {
     const response = await HttpService.get<FoodResponseDto>(
-      '/foods/food/' + id,
+      '/food/' + id,
     );
     return response.data;
   }
@@ -44,7 +44,16 @@ export class FoodService {
     id: string,
   ): Promise<RestaurantResponseDto> {
     const response = await HttpService.get<RestaurantResponseDto>(
-      '/foods/restaurant/' + id,
+      '/restaurant/' + id,
+    );
+    return response.data;
+  }
+
+  public static async getRestaurantFoods(
+    id: string,
+  ): Promise<FoodResponseDto> {
+    const response = await HttpService.get<FoodResponseDto>(
+      `/restaurant/${id}/foods`,
     );
     return response.data;
   }
