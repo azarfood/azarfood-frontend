@@ -40,41 +40,43 @@ export default function PersonalInfo() {
 
   return (
     <>
-    <div className='mb-3 w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 shadow-simple'>
-      <MaleAvatar className='mx-auto mt-8 h-[123px] w-[123px] rounded-full drop-shadow-md' />
+      <div className='mb-3 w-full rounded-lg border-2 border-primary-100 bg-foreground-100 text-center text-xs text-secondary-100 shadow-simple'>
+        <MaleAvatar className='mx-auto mt-8 h-[123px] w-[123px] rounded-full drop-shadow-md' />
 
-      <p className='mt-4 text-base'>{t('student')}</p>
+        <p className='mt-4 text-base'>{t('student')}</p>
 
-      <hr className='mx-6 my-6 h-px rounded-xl border-primary-80'></hr>
+        <hr className='mx-6 my-6 h-px rounded-xl border-primary-80'></hr>
 
-      <Information
-        icon={<User className='mt-1 h-5 w-5' />}
-        title={t('fullname')}
-        value={name}
+        <Information
+          icon={<User className='mt-1 h-5 w-5' />}
+          title={t('fullname')}
+          value={name}
+        />
+
+        <Information
+          icon={<UserCircle className='mt-1 h-5 w-5' />}
+          title={t('username')}
+          value={data.result.student_code}
+        />
+
+        <Information
+          icon={<NationalCode className='mt-1 h-5 w-5' />}
+          title={t('national_code')}
+          value={data.result.national_code}
+        />
+
+        <button
+          className='h-7 w-full rounded-b-[6px] border-t-2 border-t-primary-100 bg-foreground-100 duration-100 active:bg-primary-100 active:text-foreground-100'
+          onClick={() => setShowChangePassword(true)}
+        >
+          {t('change_password')}
+        </button>
+      </div>
+
+      <ChangePassword
+        show={showChangePassword}
+        onClose={() => setShowChangePassword(false)}
       />
-
-      <Information
-        icon={<UserCircle className='mt-1 h-5 w-5' />}
-        title={t('username')}
-        value={data.result.student_id}
-      />
-
-      <Information
-        icon={<NationalCode className='mt-1 h-5 w-5' />}
-        title={t('national_code')}
-        value={data.result.national_code}
-      />
-
-      <button
-        className='h-7 w-full rounded-b-[6px] border-t-2 border-t-primary-100 bg-foreground-100 duration-100 active:bg-primary-100 active:text-foreground-100'
-        onClick={() => setShowChangePassword(true)}
-      >
-        {t('change_password')}
-      </button>
-    </div>
-    
-    <ChangePassword show={showChangePassword}
-                      onClose={() => setShowChangePassword(false)}/>
     </>
   );
 }
