@@ -67,7 +67,7 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
           {st('price')} {priceFormatter.format(+food.price)} {st('unit_toman')}
         </div>
 
-        <div className='type-3r mt-4 w-full rounded-lg px-[10px] py-2 shadow shadow-primary-20'>
+        <div className='type-3r mt-4 w-full rounded-lg px-[10px] py-2 shadow-glow'>
           <h2 className='border-b border-b-primary-80 pb-2'>
             {st('ingredients')}
           </h2>
