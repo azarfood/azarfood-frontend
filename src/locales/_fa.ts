@@ -9,6 +9,7 @@ export default {
     confirm: 'تایید',
     cancel: 'لغو',
     discount: 'تخفیف',
+    toman: 'تومان',
   },
   auth: {
     heading: 'سلام. خوش اومدی!',
@@ -85,5 +86,11 @@ export default {
     heading_order_history: 'غذاهایی که تا امروز رزرو کرده بودی',
     heading_reserverd_food: 'غذاهایی که رزرو کردی',
     cancel_reservation: 'لغو رزرو',
+  },
+  collection: {
+    discounted: 'دارای تخفیف',
+    most_popular: 'محبوب‌ترین‌ها',
+    most_selling: 'پرفروش‌ترین‌ها',
+    best: 'بهترین‌ها',
   },
 } as const;
