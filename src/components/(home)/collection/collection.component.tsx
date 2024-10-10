@@ -1,10 +1,13 @@
 'use client';
 
+import { useSuspenseQuery } from '@tanstack/react-query';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 
+import Food from '@/components/food/food.component';
 import { allCollections } from '@/configs/constants/collectios.constants';
 import { useI18n, useScopedI18n } from '@/locales/client';
+import { FoodService } from '@/services/food/food.service';
 
 export default function Collecttion() {
   const t = useI18n();
@@ -13,22 +16,6 @@ export default function Collecttion() {
   function handleOnClick() {
     console.log('see all');
   }
-
-  /*  allCollections.map((item) => {
-  const { data } = useSuspenseQuery({
-    queryKey: ['/foods/search/food' , item],
-    queryFn: async () => {
-      const response = await FoodService.getFoodSearch({
-        q: '',
-        category: 'all',
-        collection: item,
-        page: 1,
-        perPage: 5,
-      });
-      return response;
-    },
-  })
-})*/
 
   const containerVariants = {
     hidden: { opacity: 0 },
