@@ -36,7 +36,7 @@ export default function PersonalInfo() {
     return <div>error</div>;
   }
 
-  const name = data.result.first_name + data.result.last_name;
+  const name = data.result.first_name + ' ' + data.result.last_name;
 
   return (
     <>
