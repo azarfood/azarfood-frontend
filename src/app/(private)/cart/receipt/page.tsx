@@ -58,7 +58,7 @@ export interface FoodRowProps extends PropsWithChildren {
   receipt: ReceiptItem;
 }
 
-export function FoodRow({ receipt }: FoodRowProps) {
+function Receipt({ receipt }: FoodRowProps) {
   const t = useI18n();
   const { receiptDeleteItem } = useCart();
 
@@ -241,7 +241,7 @@ export default function ReceiptPage() {
         </div>
       )}
       {receipts.map((receipt) => (
-        <FoodRow receipt={receipt} key={receipt.id} />
+        <Receipt receipt={receipt} key={receipt.id} />
       ))}
     </main>
   );

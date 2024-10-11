@@ -14,20 +14,20 @@ export default function Food(params: FoodDto) {
   const t = useI18n();
   const router = useRouter();
 
-  let finalPrice = params.price;
+  let finalPrice = +params.price;
 
   function handleChildOnClick(id: string) {
     console.log(`child ${id}`);
   }
 
   if (params.discount) {
-    finalPrice = params.price - (params.discount * params.price) / 100;
+    finalPrice = +params.price - (params.discount * +params.price) / 100;
   }
 
   return (
     <button
       id={params.id}
-      className='min-w-40 max-w-40 items-center rounded-lg border border-secondary-40 bg-foreground-100 px-3 py-2 text-center shadow-simple-02'
+      className='shadow-simple-02 min-w-40 max-w-40 items-center rounded-lg border border-secondary-40 bg-foreground-100 px-3 py-2 text-center'
       onClick={() => router.push(`/products/food/${params.id}`)}
     >
       <button
@@ -47,7 +47,7 @@ export default function Food(params: FoodDto) {
 
       <div className='mt-2 flex h-auto flex-row items-center text-center'>
         {params.discount && <Discount discount={params.discount} />}
-        <Rate rate={params.rating} />
+        <Rate rate={+params.rating} />
       </div>
 
       <p className='type-3-5r my-1 text-start text-secondary-100'>
