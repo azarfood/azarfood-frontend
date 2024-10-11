@@ -91,7 +91,7 @@ export default {
     cancel_reservation: 'لغو رزرو',
   },
   collection: {
-    discounted: 'دارای تخفیف',
+    //discounted: 'دارای تخفیف',
     most_popular: 'محبوب‌ترین‌ها',
     most_selling: 'پرفروش‌ترین‌ها',
     best: 'بهترین‌ها',
