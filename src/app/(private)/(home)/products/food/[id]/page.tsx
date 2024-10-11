@@ -57,7 +57,7 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
         </header>
         <figure className='relative mx-auto -mt-6 aspect-square w-full max-w-[288px] rounded-full bg-secondary-20'>
           <Image
-            src={food.image_url}
+            src={food.image}
             alt={food.name}
             fill
             className='flex items-center justify-center'
@@ -71,7 +71,7 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
           <h2 className='border-b border-b-primary-80 pb-2'>
             {st('ingredients')}
           </h2>
-          <p className='pt-4 text-secondary-60'>{food.description}</p>
+          <p className='pt-4 text-secondary-60'>{food.ingredients}</p>
         </div>
       </section>
     </main>
