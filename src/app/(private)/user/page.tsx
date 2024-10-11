@@ -13,7 +13,7 @@ export default function UserPanel() {
   const t = useScopedI18n('personal_info');
 
   return (
-    <div className='mx-auto mt-12 h-full w-[310px]'>
+    <div className='mx-auto mt-12 h-full w-[310px] mb-40'>
       <PersonalInfo />
 
       <Link href='/user/transactions'>
