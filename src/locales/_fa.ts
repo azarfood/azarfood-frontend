@@ -81,4 +81,9 @@ export default {
     ingredients: 'محتویات',
     discount: 'تخفیف',
   },
+  cart: {
+    cart: 'سبد خرید',
+    undo: 'بَرِش گردون',
+    confirm: 'تایید',
+  },
 } as const;

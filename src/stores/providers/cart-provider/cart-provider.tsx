@@ -28,13 +28,15 @@ export function CartProvider(props: PropsWithChildren) {
     );
   }, []);
   const cartDeleteItem = useCallback(
-    function (id: string) {
+    function (id: string, withHistory: boolean = true) {
       const item = cart.find((item) => item.food.id === id);
       if (!item) {
         return;
       }
       setCart((prev) => prev.filter((item) => item.food.id !== id));
-      setDeletedCartItems((prev) => prev.concat([item]));
+      if (withHistory) {
+        setDeletedCartItems((prev) => prev.concat([item]));
+      }
     },
     [cart],
   );
@@ -57,7 +59,9 @@ export function CartProvider(props: PropsWithChildren) {
   );
   const cartChangeFoodCount = useCallback(function (id: string, count: number) {
     setCart((prev) =>
-      prev.map((item) => (item.food.id !== id ? item : { ...item, count })),
+      prev.map((item) =>
+        item.food.id !== id ? item : { ...item, count: Math.max(count, 1) },
+      ),
     );
   }, []);
   const cartMoveToReceipt = useCallback(

@@ -9,6 +9,7 @@ import StarIcon from '@/assets/icons/star.svg';
 import { Button } from '@/components/button/button.component';
 import { useScopedI18n } from '@/locales/client';
 import { FoodService } from '@/services/food/food.service';
+import { useCart } from '@/stores/providers/cart-provider/cart-provider';
 import { priceFormatter } from '@/utils/price-formatter';
 
 export interface FoodDetailPageProps {
@@ -24,6 +25,7 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
     queryKey: ['/food', foodId],
     queryFn: () => FoodService.getFood(foodId! ?? '-1'),
   });
+  const { cartAddItem } = useCart();
   const food = data.result;
   return (
     <main className='text-secondary-100'>
@@ -47,8 +49,11 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
             </p>
           </div>
           <div className='flex items-start'>
-            <button className='type-4r flex items-center gap-1 text-secondary-100'>
-              <div className='flex size-6 items-center justify-center rounded-full bg-success-100'>
+            <button
+              onClick={() => cartAddItem(food)}
+              className='type-4r flex items-center gap-1 text-secondary-100'
+            >
+              <div className='flex size-6 items-center justify-center rounded-full bg-success-100 text-foreground-100'>
                 <AddIcon />
               </div>
               <span>{st('add_to_cart')}</span>
@@ -57,7 +62,7 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
         </header>
         <figure className='relative mx-auto -mt-6 aspect-square w-full max-w-[288px] rounded-full bg-secondary-20'>
           <Image
-            src={food.image}
+            src={'/' + food.image}
             alt={food.name}
             fill
             className='flex items-center justify-center'

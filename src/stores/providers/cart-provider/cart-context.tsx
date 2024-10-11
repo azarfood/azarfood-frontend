@@ -9,7 +9,7 @@ export interface CartContextData {
   receipts: ReceiptItem[];
 
   cartAddItem(food: FoodDto): void;
-  cartDeleteItem(id: string): void;
+  cartDeleteItem(id: string, withHistor?: boolean): void;
   cartUndoDeleteItem(): void;
   cartCleareDeleteHistory(): void;
   cartCanUndoDeleteItem: boolean;
