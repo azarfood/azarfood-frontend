@@ -11,6 +11,8 @@ export default {
     discount: 'تخفیف',
     toman: 'تومان',
     complete: 'تکمیل',
+    food: 'غذا',
+    restaurant: 'رستوران',
   },
   auth: {
     heading: 'سلام. خوش اومدی!',
@@ -93,5 +95,14 @@ export default {
     most_popular: 'محبوب‌ترین‌ها',
     most_selling: 'پرفروش‌ترین‌ها',
     best: 'بهترین‌ها',
+  },
+  heading: {
+    discounted: 'دارای تخفیف',
+    heading_order_history: 'غذاهایی که تا امروز رزرو کرده بودی',
+    heading_reserverd_food: 'غذاهایی که رزرو کردی',
+    wallet: 'کیف پول',
+    cart: 'سبد خرید',
+    receipt: 'فیش‌های پرداخت',
+    food_details: 'جزئیات غذا',
   },
 } as const;
