@@ -40,11 +40,13 @@ export default function BlankPage() {
         </AnimatePresence>
       </ul>
       <CartUndo />
-      <div className='mt-auto pt-7'>
-        <Button className='dark w-full bg-success-100 text-foreground-100'>
-          {st('confirm')}
-        </Button>
-      </div>
+      {cart.length !== 0 && (
+        <div className='mt-auto pt-7'>
+          <Button className='dark w-full bg-success-100 text-foreground-100'>
+            {st('confirm')}
+          </Button>
+        </div>
+      )}
     </main>
   );
 }
