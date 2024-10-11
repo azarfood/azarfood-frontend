@@ -10,6 +10,7 @@ export default {
     cancel: 'لغو',
     discount: 'تخفیف',
     toman: 'تومان',
+    complete: 'تکمیل',
   },
   auth: {
     heading: 'سلام. خوش اومدی!',
