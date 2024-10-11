@@ -34,9 +34,7 @@ export class FoodService {
   }
 
   public static async getFood(id: string): Promise<FoodResponseDto> {
-    const response = await HttpService.get<FoodResponseDto>(
-      '/food/' + id,
-    );
+    const response = await HttpService.get<FoodResponseDto>('/food/' + id);
     return response.data;
   }
 
@@ -49,9 +47,7 @@ export class FoodService {
     return response.data;
   }
 
-  public static async getRestaurantFoods(
-    id: string,
-  ): Promise<FoodResponseDto> {
+  public static async getRestaurantFoods(id: string): Promise<FoodResponseDto> {
     const response = await HttpService.get<FoodResponseDto>(
       `/restaurant/${id}/foods`,
     );

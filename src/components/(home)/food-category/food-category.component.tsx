@@ -1,11 +1,12 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 
+import type { FoodCategory as FoodCategoryEnum } from '@/configs/constants/food-categories.constants';
 import { useScopedI18n } from '@/locales/client';
 
 export interface FoodCategoryProps {
   image: StaticImageData;
-  category: string;
+  category: FoodCategoryEnum;
 }
 
 export default function FoodCategory({ image, category }: FoodCategoryProps) {

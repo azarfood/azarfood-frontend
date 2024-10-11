@@ -1,6 +1,5 @@
 'use client';
 
-import dayjs from 'dayjs';
 import type { Variants } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
 import { type PropsWithChildren } from 'react';
@@ -11,6 +10,7 @@ import { Button } from '@/components/button/button.component';
 import { useScopedI18n } from '@/locales/client';
 import type { OrderHistoryDto } from '@/services/user/dtos/order-history.dto';
 import { priceFormatter } from '@/utils/price-formatter';
+import { timestampToDayjs } from '@/utils/timestamp-to-dayjs';
 
 const foodRowVariants = {
   exit: {
@@ -66,7 +66,7 @@ export function FoodRow({ order, isOpen, toggleIsOpen }: FoodRowProps) {
   const canCancelReserve = order.status === 'reserved'; // we should also check the time range
   const t = useScopedI18n('order_history');
 
-  const date = dayjs(order.date);
+  const date = timestampToDayjs(order.date);
   const values = [
     { value: order.id },
     { value: date.format('YYYY/MM/DD') },

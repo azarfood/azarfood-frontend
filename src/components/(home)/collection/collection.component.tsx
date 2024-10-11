@@ -1,13 +1,10 @@
 'use client';
 
-import { useSuspenseQuery } from '@tanstack/react-query';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 
-import Food from '@/components/food/food.component';
 import { allCollections } from '@/configs/constants/collectios.constants';
 import { useI18n, useScopedI18n } from '@/locales/client';
-import { FoodService } from '@/services/food/food.service';
 
 export default function Collecttion() {
   const t = useI18n();
@@ -27,10 +24,10 @@ export default function Collecttion() {
     },
   } satisfies Variants;
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -5 }, // Start hidden and moved left by 5px
-    visible: { opacity: 1, x: 0 }, // Fade in and move to original position
-  } satisfies Variants;
+  // const itemVariants = {
+  //   hidden: { opacity: 0, x: -5 }, // Start hidden and moved left by 5px
+  //   visible: { opacity: 1, x: 0 }, // Fade in and move to original position
+  // } satisfies Variants;
 
   return (
     <>

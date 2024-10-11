@@ -16,6 +16,9 @@ const config: Config = {
         'simple-01': '0 1px 4px rgba(0, 0, 34, 0.4000000059604645)',
         'simple-02': '0 2px 4px rgba(0, 0, 34, 0.20000000298023224)',
       },
+      boxShadow: {
+        glow: '0px 0px 4px 0.5px rgba(255, 132, 4, 0.20000000298023224)',
+      },
 
       colors: {
         primary: {
