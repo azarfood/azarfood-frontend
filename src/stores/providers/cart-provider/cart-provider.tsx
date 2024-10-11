@@ -65,7 +65,7 @@ export function CartProvider(props: PropsWithChildren) {
     );
   }, []);
   const cartMoveToReceipt = useCallback(
-    function (info: Exclude<ReceiptItem, 'products'>) {
+    function (info: Omit<ReceiptItem, 'products'>) {
       setReceipts((prev) => prev.concat([{ ...info, products: cart }]));
       setCart([]);
       cartCleareDeleteHistory();
@@ -75,16 +75,9 @@ export function CartProvider(props: PropsWithChildren) {
   const receiptDeleteAll = useCallback(function () {
     setReceipts([]);
   }, []);
-  const receiptDeleteItem = useCallback(
-    function (id: string) {
-      const item = receipts.find((item) => item.id === id);
-      if (!item) {
-        return;
-      }
-      setReceipts((prev) => prev.filter((item) => item.id !== id));
-    },
-    [receipts],
-  );
+  const receiptDeleteItem = useCallback(function (id: string) {
+    setReceipts((prev) => prev.filter((item) => item.id !== id));
+  }, []);
   const receiptUpdateItem = useCallback(function (
     id: string,
     patch: Partial<ReceiptItem>,
@@ -95,14 +88,10 @@ export function CartProvider(props: PropsWithChildren) {
   }, []);
 
   useEffect(() => {
-    if (cart.length) {
-      StorageService.cart.set(cart);
-    }
+    StorageService.cart.set(cart);
   }, [cart]);
   useEffect(() => {
-    if (receipts.length) {
-      StorageService.receipts.set(receipts);
-    }
+    StorageService.receipts.set(receipts);
   }, [receipts]);
 
   return (

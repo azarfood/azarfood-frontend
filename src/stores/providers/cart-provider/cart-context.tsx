@@ -14,7 +14,7 @@ export interface CartContextData {
   cartCleareDeleteHistory(): void;
   cartCanUndoDeleteItem: boolean;
   cartChangeFoodCount(id: string, count: number): void;
-  cartMoveToReceipt(info: Exclude<ReceiptItem, 'products'>): void;
+  cartMoveToReceipt(info: Omit<ReceiptItem, 'products'>): void;
 
   receiptDeleteAll(): void;
   receiptDeleteItem(id: string): void;

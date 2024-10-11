@@ -86,4 +86,19 @@ export default {
     undo: 'بَرِش گردون',
     confirm: 'تایید',
   },
+  receipts: {
+    receipts: 'فیش‌های پرداخت',
+    pay_all: 'پرداخت همه',
+    delete_all: 'حذف همه',
+    pay: 'پرداخت',
+    delete: 'حذف',
+    date: 'تاریخ:',
+    delivery_time: 'بازه‌ی زمانی:',
+    delivery_place: 'محل تحویل:',
+    confirm: 'تایید',
+  },
+  delivery_locations: {
+    olum_paye: 'علوم پایه',
+    adabiat: 'ادبیات',
+  },
 } as const;
