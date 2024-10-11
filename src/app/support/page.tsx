@@ -15,7 +15,7 @@ export default function ReservedFoodPage() {
   const router = useRouter();
 
   return (
-    <MainLayout>
+    <MainLayout shouldShowFooter={false}>
       <div className='type-sb mt-4 flex items-center rounded-lg bg-success-100 text-foreground-100'>
         <span className='px-3'>{t('title')}</span>
         <Button
@@ -25,19 +25,24 @@ export default function ReservedFoodPage() {
           <ArrowLeftIcon />
         </Button>
       </div>
-      <div className='type-4m mt-7 border-2 p-4 border-success-100 rounded-lg bg-foreground-100 text-secondary-60'>
+      <div className='type-4m mt-7 rounded-lg border-2 border-success-100 bg-foreground-100 p-4 text-secondary-60'>
         {t('text')}
-        <div className="type-3m mt-3 p-3 flex flex-col items-end space-y-3">
-          <Link className="flex items-center space-x-2" href="https://t.me/azarFoodSupport">
+        <div className='type-3m mt-3 flex flex-col items-end space-y-3 p-3'>
+          <Link
+            className='flex items-center space-x-2'
+            href='https://t.me/azarFoodSupport'
+          >
             azarFoodSupport@
-            <TelegramIcon className="w-5 h-5 mx-2" />
+            <TelegramIcon className='mx-2 h-5 w-5' />
           </Link>
-          <Link className="flex items-center space-x-2" href="mailto:azarFoodSupport@gmail.com">
+          <Link
+            className='flex items-center space-x-2'
+            href='mailto:azarFoodSupport@gmail.com'
+          >
             azarFoodSupport@gmail.com
-            <GmailIcon className="w-5 h-5 mx-2" />
+            <GmailIcon className='mx-2 h-5 w-5' />
           </Link>
         </div>
-
       </div>
     </MainLayout>
   );
