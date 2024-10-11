@@ -91,12 +91,14 @@ export default function LoginPage() {
           {t('login')}
         </Button>
       </form>
-      <Button
-        disabled={isSubmitting}
-        className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
-      >
-        {t('support')}
-      </Button>
+      <Link href='/support'>
+        <Button
+          disabled={isSubmitting}
+          className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
+        >
+          {t('support')}
+        </Button>
+      </Link>
     </main>
   );
 }

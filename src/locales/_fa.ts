@@ -121,4 +121,8 @@ export default {
     olum_paye: 'علوم پایه',
     adabiat: 'ادبیات',
   },
+  support: {
+    title: 'پشتیبانی',
+    text: 'برای هر مشکلی میتونی از راه های زیر با ما ارتباط برقرار کنی :)',
+  },
 } as const;
