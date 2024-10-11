@@ -1,8 +1,8 @@
 export interface RestaurantDto {
-  id: string,
+  id: string;
   name: string;
-  rating?: number;
+  rating?: string;
   image: string;
-  banner_url?: string;
+  banner_url?: string | null;
   address: string;
 }

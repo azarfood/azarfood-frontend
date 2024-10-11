@@ -15,6 +15,7 @@ import { PasswordInput } from '@/components/password-input/password-input.compon
 import { TextInput } from '@/components/text-input/text-input.component';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
+import { StorageService } from '@/services/storage/storage.service';
 import { UserService } from '@/services/user/user.service';
 import { useAuth } from '@/stores/providers/auth-provider/auth-provider';
 import { errorSchema } from '@/types/dto/error.dto';
