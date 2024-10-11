@@ -6,11 +6,13 @@ import FoodGrid from '@/components/(products)/food-grid/food-grid.component';
 import RestaurantGrid from '@/components/(products)/restaurant-grid/restaurant-grid.component';
 import FoodCategoryGroup from '@/components/food-category-group/food-category-group.component';
 import Heading from '@/components/heading/heading.component';
+import { useUnsafeI18n } from '@/locales/check-key';
 import { useI18n } from '@/locales/client';
 import { cn } from '@/utils/cn';
 
 export default function SeeAll() {
   const t = useI18n();
+  const ut = useUnsafeI18n();
   const pathname = usePathname();
   const pageHeading = pathname.split('/').pop()?.toString();
 
@@ -19,7 +21,7 @@ export default function SeeAll() {
   return (
     <>
       <Heading className='bg-primary-100'>
-        {t(`collection.${pageHeading}`)}
+        {ut(`collection.${pageHeading}`)}
       </Heading>
 
       <FoodCategoryGroup />

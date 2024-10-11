@@ -3,9 +3,9 @@ import type { RestaurantDto } from './restaurant.dto';
 export interface FoodDto {
   id: string;
   name: string;
-  rating: number;
+  rating: string;
   image: string;
-  price: number;
+  price: string;
   restaurant: RestaurantDto;
   ingredients: string;
   discount?: number;

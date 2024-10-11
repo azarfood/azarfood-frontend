@@ -96,6 +96,38 @@ export default {
     most_selling: 'پرفروش‌ترین‌ها',
     best: 'بهترین‌ها',
   },
+  food_detail: {
+    food_detail: 'جزئیات غذا',
+    add_to_cart: 'افزودن به سبد خرید',
+    price: 'قیمت :',
+    unit_toman: 'تومان',
+    ingredients: 'محتویات',
+    discount: 'تخفیف',
+  },
+  cart: {
+    cart: 'سبد خرید',
+    undo: 'بَرِش گردون',
+    confirm: 'تایید',
+  },
+  receipts: {
+    receipts: 'فیش‌های پرداخت',
+    pay_all: 'پرداخت همه',
+    delete_all: 'حذف همه',
+    pay: 'پرداخت',
+    delete: 'حذف',
+    date: 'تاریخ:',
+    delivery_time: 'بازه‌ی زمانی:',
+    delivery_place: 'محل تحویل:',
+    confirm: 'تایید',
+  },
+  delivery_locations: {
+    olum_paye: 'علوم پایه',
+    adabiat: 'ادبیات',
+  },
+  support: {
+    title: 'پشتیبانی',
+    text: 'برای هر مشکلی میتونی از راه های زیر با ما ارتباط برقرار کنی :)',
+  },
   heading: {
     discounted: 'دارای تخفیف',
     heading_order_history: 'غذاهایی که تا امروز رزرو کرده بودی',

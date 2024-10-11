@@ -4,14 +4,12 @@ import Star from '@/assets/icons/star.svg';
 interface RatingGroupProps {
   rate: string;
 }
-export default function RatingGroup(props: RatingGroupProps) {
-  const rate = Number(props.rate);
-  
+export default function RatingGroup(_props: RatingGroupProps) {
   return (
     <div className='flex flex-row justify-center'>
-      <Star className='size-[10px]'/>
-      <Star className='size-[10px]'/>
-      <Star className='size-[10px]'/>
+      <Star className='size-[10px]' />
+      <Star className='size-[10px]' />
+      <Star className='size-[10px]' />
       <HalfStar />
     </div>
   );

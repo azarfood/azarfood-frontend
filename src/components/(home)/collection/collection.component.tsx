@@ -34,6 +34,10 @@ export default function Collecttion() {
     },
   } satisfies Variants;
 
+  // const itemVariants = {
+  //   hidden: { opacity: 0, x: -5 }, // Start hidden and moved left by 5px
+  //   visible: { opacity: 1, x: 0 }, // Fade in and move to original position
+  // } satisfies Variants;
   return (
     <>
       {allCollections.map((item) => (

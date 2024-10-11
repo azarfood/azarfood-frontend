@@ -29,6 +29,7 @@ const vazirmatn = Vazirmatn({
 export const metadata: Metadata = {
   title: 'Azarfood',
   description: 'Where great food meets great minds.',
+  manifest: './manifest.ts',
 };
 
 const locale = 'fa';
@@ -42,6 +43,22 @@ export default function RootLayout({
 
   return (
     <html lang={locale} dir={dir} className='h-full'>
+      <head>
+        <link
+          rel='icon'
+          type='image/png'
+          href='/favicon-48x48.png'
+          sizes='48x48'
+        />
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+        <link rel='shortcut icon' href='/favicon.ico' />
+        <link
+          rel='apple-touch-icon'
+          sizes='180x180'
+          href='/apple-touch-icon.png'
+        />
+        <meta name='apple-mobile-web-app-title' content='Azarfood' />
+      </head>
       <body
         className={cn(
           montserrat.variable,

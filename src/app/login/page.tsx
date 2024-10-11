@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import type { z } from 'zod';
@@ -23,8 +23,13 @@ import { errorSchema } from '@/types/dto/error.dto';
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-  const { setToken } = useAuth();
+  const { setToken, token } = useAuth();
   const t = useScopedI18n('auth');
+  useEffect(() => {
+    if (token) {
+      router.push('/');
+    }
+  }, [token, router]);
 
   type FormType = z.infer<typeof loginSchema>;
 
@@ -86,12 +91,14 @@ export default function LoginPage() {
           {t('login')}
         </Button>
       </form>
-      <Button
-        disabled={isSubmitting}
-        className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
-      >
-        {t('support')}
-      </Button>
+      <Link href='/support'>
+        <Button
+          disabled={isSubmitting}
+          className='type-h6 absolute bottom-5 right-5 min-h-7 rounded bg-success-100'
+        >
+          {t('support')}
+        </Button>
+      </Link>
     </main>
   );
 }
