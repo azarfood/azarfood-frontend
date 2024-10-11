@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import type { z } from 'zod';
@@ -15,7 +15,6 @@ import { PasswordInput } from '@/components/password-input/password-input.compon
 import { TextInput } from '@/components/text-input/text-input.component';
 import { useScopedI18n } from '@/locales/client';
 import { loginSchema } from '@/schemas/login.schema';
-import { StorageService } from '@/services/storage/storage.service';
 import { UserService } from '@/services/user/user.service';
 import { useAuth } from '@/stores/providers/auth-provider/auth-provider';
 import { errorSchema } from '@/types/dto/error.dto';
@@ -24,8 +23,13 @@ import { errorSchema } from '@/types/dto/error.dto';
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-  const { setToken } = useAuth();
+  const { setToken, token } = useAuth();
   const t = useScopedI18n('auth');
+  useEffect(() => {
+    if (token) {
+      router.push('/');
+    }
+  }, [token, router]);
 
   type FormType = z.infer<typeof loginSchema>;
 

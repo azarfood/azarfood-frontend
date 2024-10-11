@@ -14,7 +14,7 @@ export default function BlankPage() {
   const router = useRouter();
   const st = useScopedI18n('cart');
   return (
-    <main className='pb-4'>
+    <main className='flex h-full flex-col pb-4'>
       <div className='type-sb mt-4 flex items-center rounded-lg bg-secondary-100 text-foreground-100'>
         <span className='px-3'>{st('cart')}</span>
         <Button
@@ -40,9 +40,11 @@ export default function BlankPage() {
         </AnimatePresence>
       </ul>
       <CartUndo />
-      <Button className='dark mt-7 w-full bg-success-100 text-foreground-100'>
-        {st('confirm')}
-      </Button>
+      <div className='mt-auto pt-7'>
+        <Button className='dark w-full bg-success-100 text-foreground-100'>
+          {st('confirm')}
+        </Button>
+      </div>
     </main>
   );
 }
