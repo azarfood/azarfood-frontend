@@ -80,7 +80,7 @@ function Receipt({ receipt }: FoodRowProps) {
   return (
     <>
       <motion.div
-        className='flex flex-col rounded-lg bg-secondary-5 px-2'
+        className='flex flex-col rounded-lg bg-secondary-5 px-2 shadow-simple-02'
         variants={foodRowVariants}
         exit='exit'
         animate='enter'
@@ -227,22 +227,24 @@ export default function ReceiptPage() {
       </div>
       {receipts.length !== 0 && (
         <div className='flex gap-2 pb-4 pt-4'>
-          <Button className='h-[27px] min-h-0 rounded bg-success-100 px-1 py-0'>
+          <Button className='h-[27px] min-h-0 rounded bg-success-100 px-2 py-0'>
             <PayAllIcon className='ml-2' />
             {st('pay_all')}
           </Button>
           <Button
             onClick={receiptDeleteAll}
-            className='h-[27px] min-h-0 rounded bg-error-100 px-1 py-0'
+            className='h-[27px] min-h-0 rounded bg-error-100 px-2 py-0'
           >
             <TrashIcon className='ml-2' />
             {st('delete_all')}
           </Button>
         </div>
       )}
-      {receipts.map((receipt) => (
-        <Receipt receipt={receipt} key={receipt.id} />
-      ))}
+      <div className='flex flex-col gap-4 pb-4'>
+        {receipts.map((receipt) => (
+          <Receipt receipt={receipt} key={receipt.id} />
+        ))}
+      </div>
     </main>
   );
 }

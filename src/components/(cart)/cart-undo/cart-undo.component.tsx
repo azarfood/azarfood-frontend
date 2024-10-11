@@ -36,7 +36,7 @@ export function CartUndo() {
     <AnimatePresence>
       {cartCanUndoDeleteItem && (
         <motion.button
-          className='fixed bottom-14 left-1/2 flex h-8 -translate-x-1/2 items-center gap-2 rounded-lg bg-secondary-60 px-2 text-foreground-100 shadow-lg'
+          className='fixed bottom-14 left-1/2 z-10 flex h-8 -translate-x-1/2 items-center gap-2 rounded-lg bg-secondary-60 px-2 text-foreground-100 shadow-lg'
           onClick={cartUndoDeleteItem}
           variants={buttonVariants}
           initial='exit'
