@@ -7,7 +7,6 @@ import AddIcon from '@/assets/icons/add.svg';
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
 import StarIcon from '@/assets/icons/star.svg';
 import { Button } from '@/components/button/button.component';
-import { imageServerUrl } from '@/configs/constants/global.constants';
 import { useScopedI18n } from '@/locales/client';
 import { FoodService } from '@/services/food/food.service';
 import { useCart } from '@/stores/providers/cart-provider/cart-provider';
