@@ -51,7 +51,9 @@ export default function BlankPage() {
       <div className='mt-auto pb-4 pt-4'>
         <Button
           onClick={() =>
-            cart.length !== 0 ? setIsModalOpen(true) : router.push('/receipt')
+            cart.length !== 0
+              ? setIsModalOpen(true)
+              : router.push('/cart/receipt')
           }
           className='dark w-full bg-success-100 text-foreground-100'
         >
