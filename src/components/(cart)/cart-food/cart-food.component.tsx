@@ -9,6 +9,7 @@ import { Button } from '@/components/button/button.component';
 import { useI18n } from '@/locales/client';
 import { useCart } from '@/stores/providers/cart-provider/cart-provider';
 import type { CartItem } from '@/stores/providers/cart-provider/cart-provider.types';
+import { imageToUrl } from '@/utils/image-to-url';
 import { priceFormatter } from '@/utils/price-formatter';
 
 import { CartCounter } from '../cart-counter/cart-counter.component';
@@ -64,7 +65,7 @@ export function CartFood({ cartItem }: CartFoodProps) {
       >
         <figure className='relative size-[86px]'>
           <Image
-            src='/pizza.png'
+            src={imageToUrl(food.image)}
             className='object-contain'
             fill
             alt={food.name}

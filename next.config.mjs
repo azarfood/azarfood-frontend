@@ -25,6 +25,15 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: process.env.NEXT_PUBLIC_IMAGE_SERVER_URL,
+        protocol: 'https',
+        pathname: '**',
+      },
+    ],
+  },
 };
 
 export default withSerwist(nextConfig);

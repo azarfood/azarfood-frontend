@@ -7,9 +7,11 @@ import AddIcon from '@/assets/icons/add.svg';
 import ArrowLeftIcon from '@/assets/icons/arrow-left.svg';
 import StarIcon from '@/assets/icons/star.svg';
 import { Button } from '@/components/button/button.component';
+import { imageServerUrl } from '@/configs/constants/global.constants';
 import { useScopedI18n } from '@/locales/client';
 import { FoodService } from '@/services/food/food.service';
 import { useCart } from '@/stores/providers/cart-provider/cart-provider';
+import { imageToUrl } from '@/utils/image-to-url';
 import { priceFormatter } from '@/utils/price-formatter';
 
 export interface FoodDetailPageProps {
@@ -62,7 +64,7 @@ export default function FoodDetailPage(props: FoodDetailPageProps) {
         </header>
         <figure className='relative mx-auto -mt-6 aspect-square w-full max-w-[288px] rounded-full bg-secondary-20'>
           <Image
-            src={'/' + food.image}
+            src={imageToUrl(food.image)}
             alt={food.name}
             fill
             className='flex items-center justify-center'
