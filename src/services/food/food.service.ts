@@ -47,8 +47,8 @@ export class FoodService {
     return response.data;
   }
 
-  public static async getRestaurantFoods(id: string): Promise<FoodResponseDto> {
-    const response = await HttpService.get<FoodResponseDto>(
+  public static async getRestaurantFoods(id: string): Promise<FoodSearchResponseDto> {
+    const response = await HttpService.get<FoodSearchResponseDto>(
       `/restaurant/${id}/foods`,
     );
     return response.data;
