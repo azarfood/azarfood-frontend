@@ -8,6 +8,7 @@ import Rate from '@/components/food/rate/rate.component';
 import Heading from '@/components/heading/heading.component';
 import { useScopedI18n } from '@/locales/client';
 import { FoodService } from '@/services/food/food.service';
+import { imageToUrl } from '@/utils/image-to-url';
 
 export interface RestaurantDetailProps {
   params: {
@@ -35,16 +36,16 @@ export default function RestaurantDetail(props: RestaurantDetailProps) {
   const rating = Number(resData.result.rating).toFixed(1);
 
   return (
-    <main>
+    <main className='pb-8'>
       <Heading className='bg-primary-100'>{resData.result.name}</Heading>
 
-      <div className='relative my-4 rounded-lg'>
+      <div className='relative my-4 overflow-hidden rounded-lg'>
         <Image
           height={218}
           width={390}
-          src={'/' + resData.result.banner_url}
-          alt='i'
-          className='object-contain'
+          src={imageToUrl('Images/banner.png')}
+          alt={resData.result.name}
+          className='flex h-[218px] w-[390px] items-center justify-center object-contain object-cover'
         />
         <div className='absolute right-2 top-2 rounded bg-foreground-80 px-2 py-[1px]'>
           {rating && <Rate rate={rating} className='text-secondary-60' />}
@@ -62,9 +63,9 @@ export default function RestaurantDetail(props: RestaurantDetailProps) {
           <Image
             height={32}
             width={40}
-            src={'/' + resData.result.image}
-            alt='i'
-            className='object-contain'
+            src={imageToUrl('Images/logo.png')}
+            alt={resData.result.name}
+            className='h-8 w-10 object-contain'
           />
           <p className='type-4r mr-1 text-secondary-100'>{st('menu')}</p>
         </div>

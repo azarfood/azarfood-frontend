@@ -1,4 +1,4 @@
-import Star from '@/assets/icons/star.svg';
+import Star from '@/assets/icons/star-2.svg';
 import { cn } from '@/utils/cn';
 
 export interface RateProps {
@@ -13,7 +13,7 @@ export default function Rate(props: RateProps) {
       dir='ltr'
     >
       <p className='type-3r text-secondary-60'>{props.rate}</p>
-      <Star className={cn('mt-[1px]', props.className)} />
+      <Star className={cn('mt-[1px] text-star-100', props.className)} />
     </div>
   );
 }

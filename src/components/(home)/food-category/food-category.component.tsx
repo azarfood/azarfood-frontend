@@ -13,7 +13,7 @@ export default function FoodCategory({ image, category }: FoodCategoryProps) {
   const t = useScopedI18n('food_categories');
 
   function handleClick(category: string) {
-    console.log('Category clicked:', category);
+    void category;
   }
 
   return (

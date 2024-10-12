@@ -11,6 +11,7 @@ import { useI18n } from '@/locales/client';
 import type { FoodDto } from '@/services/food/dtos/food.dto';
 import { useCart } from '@/stores/providers/cart-provider/cart-provider';
 import { cn } from '@/utils/cn';
+import { imageToUrl } from '@/utils/image-to-url';
 
 interface FoodProps {
   props: FoodDto;
@@ -48,11 +49,11 @@ export default function Food({ props, className }: FoodProps) {
         }}
       ></button>
       <Image //todo: fix the size
-        src={'/' + props.image}
+        src={imageToUrl(food.image)}
         width={103}
         height={86}
         alt='i'
-        className='mx-auto my-1 object-contain'
+        className='mx-auto my-1 h-[86px] object-contain'
       />
 
       <div className='mt-2 flex h-auto flex-row items-center text-center'>

@@ -5,6 +5,7 @@ export function usePrevious<T>(value: T, dependencies?: unknown[]) {
   const prevValue = valueRef.current;
   useEffect(() => {
     valueRef.current = value;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
   return prevValue;
 }
