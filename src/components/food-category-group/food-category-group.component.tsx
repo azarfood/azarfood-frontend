@@ -5,7 +5,11 @@ export default function FoodCategoryGroup() {
   return (
     <div className='mb-4 mt-7 flex flex-row gap-5 overflow-y-hidden overflow-x-scroll p-1 pb-3'>
       {foodCategories.map((item) => (
-        <FoodCategory image={item.image} category={item.category} key='' />
+        <FoodCategory
+          image={item.image}
+          category={item.category}
+          key={item.category}
+        />
       ))}
     </div>
   );

@@ -10,11 +10,17 @@ export interface ButtonProps extends ComponentProps<'button'> {
   context: string;
 }
 
-export default function Button({ icon, context, className }: ButtonProps) {
+export default function Button({
+  icon,
+  context,
+  className,
+  ...props
+}: ButtonProps) {
   const { onMouseDown, ripples } = useRipple();
 
   return (
     <button
+      {...props}
       className={cn(
         'dark relative my-4 flex h-9 w-full flex-row items-center gap-2 overflow-hidden rounded-lg bg-primary-100 text-[14px] text-foreground-100 shadow-simple-01',
         className,

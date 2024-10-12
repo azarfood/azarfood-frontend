@@ -38,6 +38,7 @@ export default {
       order_history: 'تاریخچه‌ی سفارشات',
       reservation_history: 'غذاهای رزرو شده',
       support: 'پشتیبانی',
+      logout: 'خروج',
     },
   },
   reset_password: {

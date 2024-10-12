@@ -4,6 +4,7 @@ import { useQueries } from '@tanstack/react-query';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { Fragment } from 'react';
 
 import Food from '@/components/food/food.component';
 import { allCollections } from '@/configs/constants/collectios.constants';
@@ -17,7 +18,7 @@ export default function Collecttion() {
 
   const data = useQueries({
     queries: allCollections.map((item) => ({
-      queryKey: ['/food'],
+      queryKey: ['/food', item, { short_list: true }],
       queryFn: async () => {
         const response = await FoodService.getFoodSearch({
           collection: item,
@@ -29,10 +30,6 @@ export default function Collecttion() {
     })),
   });
 
-  const foods = data.map((item) => {
-    return item.data?.map((food) => <Food props={food} key={food.id} />);
-  });
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,7 +39,7 @@ export default function Collecttion() {
       },
     },
   } satisfies Variants;
-  
+
   /*const itemVariants = {
     hidden: { opacity: 0, x: -5 }, // Start hidden and moved left by 5px
 
@@ -51,15 +48,15 @@ export default function Collecttion() {
 
   return (
     <>
-      {allCollections.map((item) => (
-        <>
+      {data.map((item, index) => (
+        <Fragment key={index}>
           <section className='-ml-5 mb-1 mt-4'>
             <header className='mb-5 flex flex-row items-center justify-between text-center'>
-              <p className='type-4-5b'>{st(item)}</p>
+              <p className='type-4-5b'>{st(allCollections[index])}</p>
               <button
                 className='type-3r ml-2 border-b-[1px] border-b-secondary-100 px-[1.5px] text-secondary-100 transition hover:border-b-primary-100 hover:text-primary-100 active:border-b-primary-100 active:text-primary-100'
                 onClick={() => {
-                  router.push(`/${item}`);
+                  router.push(`/${allCollections[index]}`);
                 }}
               >
                 {t('general.all')}
@@ -70,10 +67,10 @@ export default function Collecttion() {
               className='flex flex-row gap-5 overflow-y-hidden overflow-x-scroll pb-3 pl-3'
               variants={containerVariants}
             >
-              {foods}
+              {item.data?.map((food) => <Food props={food} key={food.id} />)}
             </motion.div>
           </section>
-        </>
+        </Fragment>
       ))}
     </>
   );
