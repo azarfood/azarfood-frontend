@@ -1,5 +1,5 @@
 import type { ResponseDto } from '@/types/dto/response.dto';
 
-import type { RestaurantResponseDto } from './restaurant-response.dto';
+import type { RestaurantDto } from './restaurant.dto';
 
-export type RestaurantSearchResponseDto = ResponseDto<RestaurantResponseDto[]>;
+export type RestaurantSearchResponseDto = ResponseDto<RestaurantDto[]>;

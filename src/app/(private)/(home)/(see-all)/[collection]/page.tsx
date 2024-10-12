@@ -1,7 +1,7 @@
 'use client';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 import FoodGrid from '@/components/(products)/food-grid/food-grid.component';
 import RestaurantGrid from '@/components/(products)/restaurant-grid/restaurant-grid.component';
@@ -25,8 +25,18 @@ export default function SeeAll(props: SeeAllProps) {
   const pathname = usePathname();
   const pageHeading = pathname.split('/').pop()?.toString();
   const collection = props.params.collection;
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [toShow, setToShow] = useState('food');
+  const [toShow, setToShow] = useState(searchParams.get('tab') ?? 'food');
+
+  useEffect(() => {
+    if (toShow === 'restaurant') {
+      router.replace(pathname + '?tab=restaurant');
+    } else {
+      router.replace(pathname);
+    }
+  }, [toShow, router, pathname]);
 
   const { data: collectionFoods } = useSuspenseQuery({
     queryKey: ['/food', collection],
@@ -41,7 +51,7 @@ export default function SeeAll(props: SeeAllProps) {
   const { data: collectionRestaurants } = useSuspenseQuery({
     queryKey: ['/restaurant', collection],
     queryFn: () =>
-      FoodService.getFoodSearch({
+      FoodService.getRestaurantSearch({
         collection: collection,
         page: 1,
         per_page: 5,
@@ -57,6 +67,7 @@ export default function SeeAll(props: SeeAllProps) {
       id={item.id}
       name={item.name}
       image={item.image}
+      rating={item.rating}
       key={item.id}
     />
   ));
