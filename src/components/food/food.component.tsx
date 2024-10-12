@@ -58,7 +58,7 @@ export default function Food(props: FoodProps) {
         <Rate rate={+props.rating} />
       </div>
 
-      <p className='type-3-5r my-1 text-start text-secondary-100'>
+      <p className='type-3-5r my-1 text-start text-secondary-100 overflow-hidden whitespace-nowrap text-ellipsis'>
         {props.name}
       </p>
 

@@ -32,7 +32,7 @@ export default function Restaurant(props: RestaurantProps) {
         height={75}
         alt=''
       />
-      <p className='type-4sb text-secondary-100 my-1'>{props.name}</p>
+      <p className='type-4sb text-secondary-100 my-1 overflow-hidden whitespace-nowrap text-ellipsis'>{props.name}</p>
 
       <div className='min-h-[10px]'>{props.rating && <RatingGroup rate={props.rating} />}</div>
     </button>
