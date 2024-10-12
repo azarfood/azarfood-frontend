@@ -2,7 +2,7 @@ import Star from '@/assets/icons/star.svg';
 import { cn } from '@/utils/cn';
 
 export interface RateProps {
-  rate: number;
+  rate: string;
   className?: string;
 }
 
