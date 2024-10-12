@@ -32,7 +32,7 @@ export function AddToCartModal({ onClose }: AddToCartModalProps) {
   const { cartMoveToReceipt, receipts } = useCart();
   const t = useI18n();
   const dates = useMemo(() => {
-    const now = dayjs(new Date());
+    const now = dayjs(new Date()).startOf('day');
     return Array.from({ length: 5 }, (_, index) => {
       const date = now.add(index, 'day');
       return {
