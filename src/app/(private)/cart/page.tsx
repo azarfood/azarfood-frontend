@@ -48,16 +48,16 @@ export default function BlankPage() {
           <AddToCartModal onClose={() => setIsModalOpen(false)} />
         )}
       </AnimatePresence>
-      {cart.length !== 0 && (
-        <div className='mt-auto pb-4 pt-4'>
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className='dark w-full bg-success-100 text-foreground-100'
-          >
-            {st('confirm')}
-          </Button>
-        </div>
-      )}
+      <div className='mt-auto pb-4 pt-4'>
+        <Button
+          onClick={() =>
+            cart.length !== 0 ? setIsModalOpen(true) : router.push('/receipt')
+          }
+          className='dark w-full bg-success-100 text-foreground-100'
+        >
+          {st('confirm')}
+        </Button>
+      </div>
     </main>
   );
 }

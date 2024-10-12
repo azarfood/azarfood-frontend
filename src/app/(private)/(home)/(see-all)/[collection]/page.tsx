@@ -33,7 +33,7 @@ export default function SeeAll(props: SeeAllProps) {
     queryFn: () =>
       FoodService.getFoodSearch({
         collection: collection,
-        page: 2,
+        page: 1,
         per_page: 5,
       }),
   });
@@ -43,7 +43,7 @@ export default function SeeAll(props: SeeAllProps) {
     queryFn: () =>
       FoodService.getFoodSearch({
         collection: collection,
-        page: 2,
+        page: 1,
         per_page: 5,
       }),
   });
@@ -62,7 +62,7 @@ export default function SeeAll(props: SeeAllProps) {
   ));
 
   return (
-    <>
+    <main className='pb-8'>
       <Heading className='bg-primary-100'>
         {ut(`collection.${pageHeading}`)}
       </Heading>
@@ -96,6 +96,6 @@ export default function SeeAll(props: SeeAllProps) {
       ) : (
         <RestaurantGrid restaurants={restaurants} />
       )}
-    </>
+    </main>
   );
 }

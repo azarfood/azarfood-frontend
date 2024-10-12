@@ -42,12 +42,14 @@ export default function Food({ props, className }: FoodProps) {
       onClick={() => router.push(`/products/food/${props.id}`)}
     >
       <button
-        className='type-3r text-secondary-60'
+        className='type-3r w-full text-secondary-60'
         onClick={(event) => {
           event.stopPropagation();
           router.push(`/products/restaurant/${props.restaurant.id}`);
         }}
-      ></button>
+      >
+        {props.restaurant.name}
+      </button>
       <Image //todo: fix the size
         src={imageToUrl(food.image)}
         width={103}
