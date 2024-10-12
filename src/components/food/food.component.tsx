@@ -9,21 +9,23 @@ import Discount from '@/components/discount/discount.component';
 import Rate from '@/components/food/rate/rate.component';
 import { useI18n } from '@/locales/client';
 import type { FoodDto } from '@/services/food/dtos/food.dto';
+import { useCart } from '@/stores/providers/cart-provider/cart-provider';
 import { cn } from '@/utils/cn';
 
-interface FoodProps extends FoodDto {
+interface FoodProps {
+  props: FoodDto;
   className?: string;
 }
 
-export default function Food(props: FoodProps) {
+export default function Food({ props, className }: FoodProps) {
   const t = useI18n();
   const router = useRouter();
 
-  let finalPrice = +props.price;
+  const rating = Number(props.rating).toFixed(1);
+  const { cartAddItem } = useCart();
+  const food = props;
 
-  function handleChildOnClick(id: string) {
-    console.log(`child ${id}`);
-  }
+  let finalPrice = +props.price;
 
   if (props.discount) {
     finalPrice = +props.price - (props.discount * +props.price) / 100;
@@ -34,7 +36,7 @@ export default function Food(props: FoodProps) {
       id={props.id}
       className={cn(
         'max-h-[224px] min-w-40 max-w-40 items-center rounded-lg border border-secondary-40 bg-foreground-100 px-3 py-2 text-center shadow-simple-02',
-        props.className,
+        className,
       )}
       onClick={() => router.push(`/products/food/${props.id}`)}
     >
@@ -46,7 +48,7 @@ export default function Food(props: FoodProps) {
         }}
       ></button>
       <Image //todo: fix the size
-        src={props.image}
+        src={'/' + props.image}
         width={103}
         height={86}
         alt='i'
@@ -55,10 +57,10 @@ export default function Food(props: FoodProps) {
 
       <div className='mt-2 flex h-auto flex-row items-center text-center'>
         {props.discount && <Discount discount={props.discount} />}
-        <Rate rate={+props.rating} />
+        <Rate rate={rating} />
       </div>
 
-      <p className='type-3-5r my-1 text-start text-secondary-100'>
+      <p className='type-3-5r my-1 overflow-hidden text-ellipsis whitespace-nowrap text-start text-secondary-100'>
         {props.name}
       </p>
 
@@ -80,7 +82,7 @@ export default function Food(props: FoodProps) {
           className='dark mr-auto size-[26px] min-h-0 self-end rounded bg-success-100 p-0 shadow-none transition'
           onClick={(event) => {
             event.stopPropagation();
-            handleChildOnClick(props.id);
+            cartAddItem(food);
           }}
         >
           <Plus className='size-3' />

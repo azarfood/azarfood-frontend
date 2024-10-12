@@ -1,28 +1,37 @@
 'use client';
 
+import { useQueries } from '@tanstack/react-query';
 import type { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
+import Food from '@/components/food/food.component';
 import { allCollections } from '@/configs/constants/collectios.constants';
 import { useI18n, useScopedI18n } from '@/locales/client';
+import { FoodService } from '@/services/food/food.service';
 
 export default function Collecttion() {
   const t = useI18n();
   const st = useScopedI18n('collection');
   const router = useRouter();
 
-  /*  const { data } = useSuspenseQuery({
-    queryKey: ['api/food'],
-    queryFn: async () => {
-      const response = await FoodService.getFoodSearch({
-        collection: 'best',
-        page: 1,
-        per_page: 5,
-      });
-      return response;
-    },
-  });*/
+  const data = useQueries({
+    queries: allCollections.map((item) => ({
+      queryKey: ['/food'],
+      queryFn: async () => {
+        const response = await FoodService.getFoodSearch({
+          collection: item,
+          page: 1,
+          per_page: 5,
+        });
+        return response.result;
+      },
+    })),
+  });
+
+  const foods = data.map((item) => {
+    return item.data?.map((food) => <Food props={food} key={food.id} />);
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,11 +42,13 @@ export default function Collecttion() {
       },
     },
   } satisfies Variants;
+  
+  /*const itemVariants = {
+    hidden: { opacity: 0, x: -5 }, // Start hidden and moved left by 5px
 
-  // const itemVariants = {
-  //   hidden: { opacity: 0, x: -5 }, // Start hidden and moved left by 5px
-  //   visible: { opacity: 1, x: 0 }, // Fade in and move to original position
-  // } satisfies Variants;
+    visible: { opacity: 1, x: 0 }, // Fade in and move to original position
+  } satisfies Variants;*/
+
   return (
     <>
       {allCollections.map((item) => (
@@ -58,7 +69,9 @@ export default function Collecttion() {
             <motion.div
               className='flex flex-row gap-5 overflow-y-hidden overflow-x-scroll pb-3 pl-3'
               variants={containerVariants}
-            ></motion.div>
+            >
+              {foods}
+            </motion.div>
           </section>
         </>
       ))}

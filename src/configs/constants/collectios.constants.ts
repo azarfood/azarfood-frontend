@@ -1,13 +1,11 @@
 export enum AllCollections {
-  Discounted = 'discounted',
+  //Discounted = 'discounted',
   MostPopular = 'most_popular',
   MostSelling = 'most_selling',
-  Best = 'best',
 }
 
 export const allCollections = [
-  AllCollections.Discounted,
+  //AllCollections.Discounted,
   AllCollections.MostPopular,
   AllCollections.MostSelling,
-  AllCollections.Best,
 ];

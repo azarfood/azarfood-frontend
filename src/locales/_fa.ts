@@ -91,10 +91,9 @@ export default {
     cancel_reservation: 'لغو رزرو',
   },
   collection: {
-    discounted: 'دارای تخفیف',
+    //discounted: 'دارای تخفیف',
     most_popular: 'محبوب‌ترین‌ها',
     most_selling: 'پرفروش‌ترین‌ها',
-    best: 'بهترین‌ها',
   },
   food_detail: {
     food_detail: 'جزئیات غذا',
@@ -136,5 +135,8 @@ export default {
     cart: 'سبد خرید',
     receipt: 'فیش‌های پرداخت',
     food_details: 'جزئیات غذا',
+  },
+  restaurant_profile: {
+    menu: 'منو',
   },
 } as const;

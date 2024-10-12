@@ -13,6 +13,7 @@ interface RestaurantProps {
   image: string;
   className?: string;
 }
+
 export default function Restaurant(props: RestaurantProps) {
   const router = useRouter();
 
@@ -32,9 +33,13 @@ export default function Restaurant(props: RestaurantProps) {
         height={75}
         alt=''
       />
-      <p className='type-4sb text-secondary-100 my-1'>{props.name}</p>
+      <p className='type-4sb my-1 overflow-hidden text-ellipsis whitespace-nowrap text-secondary-100'>
+        {props.name}
+      </p>
 
-      <div className='min-h-[10px]'>{props.rating && <RatingGroup rate={props.rating} />}</div>
+      <div className='min-h-[10px]'>
+        {props.rating && <RatingGroup rate={props.rating} />}
+      </div>
     </button>
   );
 }
