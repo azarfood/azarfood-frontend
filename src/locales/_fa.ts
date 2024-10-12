@@ -13,6 +13,9 @@ export default {
     complete: 'تکمیل',
     food: 'غذا',
     restaurant: 'رستوران',
+    errors: {
+      request_generic: 'خطایی سمت سرور رخ داد',
+    },
   },
   auth: {
     heading: 'سلام. خوش اومدی!',
@@ -25,6 +28,7 @@ export default {
     errors: {
       username_empty: 'نام کاربری نمی‌تونه خالی باشه',
       password_empty: 'رمز عبور نمی‌تونه خالی باشه',
+      invalid_credentials: 'اطلاعات وارد شده غلطه',
     },
   },
   personal_info: {
@@ -46,6 +50,7 @@ export default {
     old_password: 'رمز عبور قبلی',
     new_password: 'رمز عبور جدید',
     confirm_password: 'تکرار رمز عبور',
+    success_message: 'رمز عبور عوض شد',
     errors: {
       password_empty: 'رمز عبور نمی‌تونه خالی باشه',
       password_min: 'رمز عبور نمی‌تونه کمتر از 8 کاراکتر باشه',
